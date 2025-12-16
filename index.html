@@ -20,9 +20,31 @@
         header {
             background-color: #6a1b9a; /* Un violet type Forfeo */
             color: white;
-            padding: 20px;
-            text-align: center;
+            padding: 10px 20px; /* Un peu moins de hauteur pour le bandeau */
+            /* C'est ici que la magie opère pour l'alignement : */
+            display: flex; 
+            align-items: center; /* Centre verticalement */
+            gap: 20px; /* Espace entre le logo et le texte */
         }
+        /* Nouveau style pour ton logo */
+        .logo-img {
+            height: 80px; /* Tu peux changer ce chiffre pour grossir/réduire le logo */
+            width: auto;
+            border-radius: 10px; /* Arrondit un peu les coins de l'image (optionnel) */
+        }
+        /* On groupe le titre et le sous-titre pour qu'ils restent ensemble */
+        .header-text {
+            text-align: left;
+        }
+        h1 {
+            margin: 0; /* Enlève les espaces inutiles autour du titre */
+            font-size: 1.8em;
+        }
+        header p {
+            margin: 0;
+            opacity: 0.9; /* Rend le sous-titre légèrement transparent */
+        }
+
         main {
             padding: 20px;
             max-width: 800px;
@@ -50,8 +72,12 @@
   <body>
 
     <header>
-        <h1>Bienvenue sur Forfeo</h1>
-        <p>Communauté & Concours</p>
+        <img src="logo.png" alt="Logo Forfeo" class="logo-img">
+        
+        <div class="header-text">
+            <h1>Bienvenue sur Forfeo</h1>
+            <p>Communauté & Concours</p>
+        </div>
     </header>
 
     <main>
