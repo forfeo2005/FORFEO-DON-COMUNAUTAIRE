@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espace Membre - Forfeo</title>
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0a192f;
+            color: #ccd6f6;
+            line-height: 1.6;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background-color: rgba(10, 25, 47, 0.95);
+            border-bottom: 1px solid #1f2f4d;
+        }
+
+        .logo-img { height: 50px; width: auto; }
+        
+        nav a { color: #a8b2d1; text-decoration: none; font-weight: 500; margin-left: 20px; }
+        nav a:hover { color: #64ffda; }
+
+        .container {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .login-box {
+            background-color: #112240;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            border: 1px solid #64ffda;
+        }
+
+        h1 { color: #e6f1ff; margin-bottom: 10px; }
+        p { color: #8892b0; margin-bottom: 30px; }
+
+        .btn-retour {
+            display: inline-block;
+            margin-top: 20px;
+            color: #64ffda;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html"><img src="logo.png" alt="Logo Forfeo" class="logo-img"></a>
+        <nav>
+            <a href="index.html">Retour à l'accueil</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="login-box">
+            <h1>Espace Membre & Upload</h1>
+            <p>
+                Inscrivez-vous à la communauté Forfeo et soumettez votre vidéo ici.<br>
+                Une fois validée, elle apparaîtra dans la galerie des Forféens !
+            </p>
+
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfEkVMWwlkUNU8_o3xkQMyvH6Ef_bye-1gGLo8cuh4cNDKGXQ/viewform?embedded=true" width="100%" height="950" frameborder="0" marginheight="0" marginwidth="0">Chargement…</iframe>
+        </div>
+        
+        <a href="index.html" class="btn-retour">← Retourner au site</a>
+    </main>
+
+</body>
+</html>
