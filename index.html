@@ -16,40 +16,75 @@
             padding: 0;
             line-height: 1.6;
             color: #333;
+            background-color: #f9f9f9; /* Fond gris très clair pour faire ressortir le blanc */
         }
         header {
-            background-color: #6a1b9a; /* Un violet type Forfeo */
+            background-color: #6a1b9a;
             color: white;
-            padding: 10px 20px; /* Un peu moins de hauteur pour le bandeau */
-            /* C'est ici que la magie opère pour l'alignement : */
+            padding: 10px 20px;
             display: flex; 
-            align-items: center; /* Centre verticalement */
-            gap: 20px; /* Espace entre le logo et le texte */
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Petite ombre sous le menu */
         }
-        /* Nouveau style pour ton logo */
         .logo-img {
-            height: 80px; /* Tu peux changer ce chiffre pour grossir/réduire le logo */
+            height: 80px;
             width: auto;
-            border-radius: 10px; /* Arrondit un peu les coins de l'image (optionnel) */
+            border-radius: 10px;
         }
-        /* On groupe le titre et le sous-titre pour qu'ils restent ensemble */
         .header-text {
             text-align: left;
         }
-        h1 {
-            margin: 0; /* Enlève les espaces inutiles autour du titre */
-            font-size: 1.8em;
-        }
-        header p {
-            margin: 0;
-            opacity: 0.9; /* Rend le sous-titre légèrement transparent */
-        }
+        h1 { margin: 0; font-size: 1.8em; }
+        header p { margin: 0; opacity: 0.9; }
 
         main {
             padding: 20px;
-            max-width: 800px;
+            max-width: 900px; /* Un peu plus large pour faire tenir les cartes */
             margin: 0 auto;
         }
+
+        /* --- NOUVEAU : LE STYLE DES CARTES --- */
+        .liste-concours {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap; /* Permet aux cartes de passer à la ligne sur mobile */
+            margin-top: 20px;
+        }
+
+        .carte-concours {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 10px; /* Coins arrondis */
+            padding: 20px;
+            flex: 1; /* Les cartes prennent la même largeur */
+            min-width: 250px; /* Largeur minimum d'une carte */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05); /* Ombre douce */
+            text-align: center;
+            transition: transform 0.2s; /* Petite animation au survol */
+        }
+
+        .carte-concours:hover {
+            transform: translateY(-5px); /* La carte monte un peu quand on passe la souris */
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+
+        .carte-concours h3 {
+            color: #6a1b9a;
+            margin-top: 0;
+        }
+        
+        .badge {
+            background-color: #e1bee7;
+            color: #4a148c;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+
+        /* --- Fin des nouveaux styles --- */
+
         .bouton {
             background-color: #ff4081;
             color: white;
@@ -57,12 +92,18 @@
             text-decoration: none;
             border-radius: 5px;
             display: inline-block;
-            margin-top: 10px;
+            margin-top: 15px;
+            font-weight: bold;
         }
+        .bouton:hover {
+            background-color: #f50057; /* Change de couleur au survol */
+        }
+
         footer {
             text-align: center;
             padding: 20px;
-            background-color: #f0f0f0;
+            background-color: #333; /* Footer sombre maintenant */
+            color: white;
             margin-top: 40px;
             font-size: 0.8em;
         }
@@ -73,7 +114,6 @@
 
     <header>
         <img src="logo.png" alt="Logo Forfeo" class="logo-img">
-        
         <div class="header-text">
             <h1>Bienvenue sur Forfeo</h1>
             <p>Communauté & Concours</p>
@@ -83,14 +123,39 @@
     <main>
         <h2>À propos de nous</h2>
         <p>
-            Bonjour ! Je suis en train de construire ce site. 
-            Ici, nous parlons de causes sociales, de concours mensuels et de solidarité.
+            Forfeo est une communauté dédiée à l'entraide et au plaisir. 
+            Nous organisons des concours mensuels et soutenons des causes sociales grâce à vos dons.
         </p>
 
-        <h2>Nos derniers concours</h2>
-        <p>C'est ici que j'ajouterai la liste des concours bientôt.</p>
+        <h2>🏆 Concours en cours</h2>
         
-        <a href="#" class="bouton">Participer maintenant</a>
+        <div class="liste-concours">
+            
+            <div class="carte-concours">
+                <span class="badge">Nouveau</span>
+                <h3>Bundle Solidaire</h3>
+                <p>Achetez un pack de jeux et soutenez une association.</p>
+                <p><strong>Prix : 500€ à gagner</strong></p>
+                <a href="#" class="bouton">Participer</a>
+            </div>
+
+            <div class="carte-concours">
+                <span class="badge">Populaire</span>
+                <h3>Grand Tirage Mensuel</h3>
+                <p>Le grand classique de Forfeo. Tirage le 30 du mois.</p>
+                <p><strong>Prix : Carte cadeau</strong></p>
+                <a href="#" class="bouton">S'inscrire</a>
+            </div>
+
+            <div class="carte-concours">
+                <span class="badge">Bientôt</span>
+                <h3>Concours Créatif</h3>
+                <p>Envoyez vos meilleures créations pour le concours d'été.</p>
+                <p><strong>Prix : Surprise !</strong></p>
+                <a href="#" class="bouton">Voir les infos</a>
+            </div>
+
+        </div>
     </main>
 
     <footer>
