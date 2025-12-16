@@ -8,7 +8,7 @@
     <style>
         /* --- 1. CONFIGURATION GÉNÉRALE (Dark Mode) --- */
         html { 
-            scroll-behavior: smooth; /* Permet le défilement doux vers les sections */ 
+            scroll-behavior: smooth; /* Défilement doux vers les ancres */ 
         }
 
         body {
@@ -26,8 +26,8 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 50px;
-            background-color: rgba(10, 25, 47, 0.95); /* Fond légèrement transparent */
-            position: sticky; /* Le menu reste collé en haut */
+            background-color: rgba(10, 25, 47, 0.95);
+            position: sticky; /* Menu fixe en haut */
             top: 0;
             z-index: 1000;
             border-bottom: 1px solid #1f2f4d;
@@ -78,7 +78,6 @@
             line-height: 1.1;
         }
 
-        /* Le dégradé de texte */
         .highlight {
             background: linear-gradient(to right, #64ffda, #00bcd4);
             -webkit-background-clip: text;
@@ -149,7 +148,7 @@
         }
 
         .carte {
-            background-color: #112240; /* Bleu un peu plus clair */
+            background-color: #112240;
             padding: 40px 30px;
             border-radius: 8px;
             flex: 1;
@@ -184,7 +183,6 @@
             margin: 25px 0;
         }
 
-        /* Boutons dans les cartes */
         .btn-carte {
             display: inline-block;
             border: 1px solid #64ffda;
@@ -203,18 +201,18 @@
         /* --- 6. SECTION FORMULAIRE --- */
         .form-section {
             padding: 100px 20px;
-            background-color: #020c1b; /* Fond très sombre */
+            background-color: #020c1b;
             text-align: center;
         }
 
         .form-container {
-            background-color: white; /* Fond blanc pour le Google Form */
+            background-color: white; /* Fond blanc propre */
             max-width: 700px;
             margin: 0 auto;
-            padding: 10px;
-            border-radius: 10px;
-            box-shadow: 0 20px 30px rgba(0,0,0,0.5);
-            overflow: hidden;
+            /* Design plus soigné pour le cadre du formulaire : */
+            border-radius: 15px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            overflow: hidden; /* Empêche le contenu de dépasser des coins arrondis */
         }
 
         /* --- 7. PIED DE PAGE --- */
