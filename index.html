@@ -8,7 +8,7 @@
     <style>
         /* --- 1. CONFIGURATION GÉNÉRALE (Dark Mode) --- */
         html { 
-            scroll-behavior: smooth; /* Défilement doux vers les ancres */ 
+            scroll-behavior: smooth; 
         }
 
         body {
@@ -27,7 +27,7 @@
             align-items: center;
             padding: 15px 50px;
             background-color: rgba(10, 25, 47, 0.95);
-            position: sticky; /* Menu fixe en haut */
+            position: sticky;
             top: 0;
             z-index: 1000;
             border-bottom: 1px solid #1f2f4d;
@@ -51,7 +51,7 @@
             transition: color 0.3s;
             font-size: 0.95em;
         }
-        nav a:hover { color: #64ffda; /* Vert menthe au survol */ }
+        nav a:hover { color: #64ffda; /* Vert menthe */ }
 
         .btn-connexion {
             border: 1px solid #64ffda;
@@ -91,7 +91,6 @@
             color: #8892b0;
         }
 
-        /* BOUTONS HERO */
         .boutons { display: flex; justify-content: center; gap: 20px; }
 
         .btn {
@@ -206,16 +205,15 @@
         }
 
         .form-container {
-            background-color: white; /* Fond blanc propre */
+            background-color: white;
             max-width: 700px;
             margin: 0 auto;
-            /* Design plus soigné pour le cadre du formulaire : */
             border-radius: 15px; 
             box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-            overflow: hidden; /* Empêche le contenu de dépasser des coins arrondis */
+            overflow: hidden;
         }
 
-        /* --- 7. PIED DE PAGE --- */
+        /* --- 7. FOOTER --- */
         footer {
             text-align: center;
             padding: 40px;
@@ -267,8 +265,8 @@
             <div class="cartes-container">
                 <div class="carte">
                     <span class="badge">Nouveau</span>
-                    <h3>Bundle Solidaire</h3>
-                    <p>Achetez un pack de jeux indés et soutenez une association locale.</p>
+                    <h3>Offre groupée</h3>
+                    <p>Profitez d'un lot exclusif de jeux indés à petit prix. 100% des profits sont reversés à une cause locale.</p>
                     <p class="prix">500 $ à gagner</p>
                     <a href="#inscription" class="btn-carte">Participer</a>
                 </div>
@@ -276,16 +274,16 @@
                 <div class="carte">
                     <span class="badge">Populaire</span>
                     <h3>Le Grand Tirage</h3>
-                    <p>Le classique mensuel. Chaque ticket est un don direct.</p>
+                    <p>Tentez votre chance ! Chaque don vous qualifie automatiquement pour remporter la cagnotte du mois.</p>
                     <p class="prix">Carte cadeau 100 $</p>
                     <a href="#inscription" class="btn-carte">S'inscrire</a>
                 </div>
 
                 <div class="carte">
-                    <span class="badge">Bientôt</span>
-                    <h3>Défi Créatif</h3>
-                    <p>Proposez votre meilleur design pour la communauté.</p>
-                    <p class="prix">Prix Surprise</p>
+                    <span class="badge">Vedette</span>
+                    <h3>Escapade de Rêve</h3>
+                    <p>Pour chaque forfait acheté, 1 $ est versé à une cause sociale. Courez la chance de gagner une escapade !</p>
+                    <p class="prix">Voyage à gagner</p>
                     <a href="#inscription" class="btn-carte">Voir les infos</a>
                 </div>
             </div>
@@ -296,7 +294,7 @@
             <p class="subtitle">Remplissez le formulaire ci-dessous pour valider votre participation.</p>
             
             <div class="form-container">
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSctK86IPfovd_pUT04iEHdSlV_TTjWJngGfPUugGtp_ctICzg/viewform?embedded=true" width="100%" height="950" frameborder="0" marginheight="0" marginwidth="0">Chargement…</iframe>
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSctK86IPfovd_pUT04iEHdSlV_TTjWJngGfPUugGtp_ctICzg/viewform?embedded=true" width="100%" height="850" frameborder="0" marginheight="0" marginwidth="0">Chargement…</iframe>
             </div>
         </section>
 
