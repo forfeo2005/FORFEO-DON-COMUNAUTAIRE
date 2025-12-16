@@ -156,6 +156,9 @@
             transition: transform 0.3s;
             position: relative;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         .carte:hover { transform: translateY(-10px); }
 
@@ -193,10 +196,25 @@
             transition: all 0.3s;
             margin-top: 10px;
             width: 80%;
+            margin-bottom: 10px;
         }
         .btn-carte:hover {
             background-color: rgba(100, 255, 218, 0.1);
         }
+
+        /* Bouton spécifique pour la vidéo */
+        .btn-video {
+            display: inline-block;
+            background-color: #0a192f; /* Fond sombre */
+            color: #64ffda;
+            border: 1px dashed #64ffda; /* Bordure pointillée pour se démarquer */
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9em;
+            width: 80%;
+        }
+        .btn-video:hover { background-color: #64ffda; color: #0a192f; }
 
         /* --- 6. SECTION FORMULAIRE --- */
         .form-section {
@@ -235,7 +253,7 @@
             <a href="causes.html">Causes</a>
             <a href="#concours">Concours</a>
             <a href="#inscription">Participer</a>
-            <a href="#" class="btn-connexion">Connexion</a>
+            <a href="connexion.html" class="btn-connexion">Connexion</a>
         </nav>
     </header>
 
@@ -289,26 +307,35 @@
             
             <div class="cartes-container">
                 <div class="carte">
-                    <span class="badge">Nouveau</span>
-                    <h3>Vivez l’expérience. Partagez-la.</h3>
-                    <p>Diffusez votre expérience réservée avec Forfeo et obtenez la chance de recevoir des avantages exclusifs.</p>
-                    <p class="prix-a-venir">Détails du concours et prix à venir...</p>
-                    <a href="#inscription" class="btn-carte">Participer</a>
+                    <div>
+                        <span class="badge">Nouveau</span>
+                        <h3>Vivez l’expérience. Partagez-la.</h3>
+                        <p>Diffusez votre expérience réservée avec Forfeo et obtenez la chance de recevoir des avantages exclusifs.</p>
+                        <p class="prix-a-venir">Détails du concours et prix à venir...</p>
+                    </div>
+                    <div>
+                        <a href="#inscription" class="btn-carte">Participer</a>
+                        <a href="videos.html" class="btn-video">▶ Vidéo des Forféens</a>
+                    </div>
                 </div>
 
                 <div class="carte">
-                    <span class="badge">Populaire</span>
-                    <h3>Le Grand Tirage</h3>
-                    <p>Tentez votre chance ! Chaque don vous qualifie automatiquement pour remporter le prix trimestriel.</p>
-                    <p class="prix-a-venir">Détails du concours et prix à venir...</p>
+                    <div>
+                        <span class="badge">Populaire</span>
+                        <h3>Le Grand Tirage</h3>
+                        <p>Tentez votre chance ! Chaque don vous qualifie automatiquement pour remporter le prix trimestriel.</p>
+                        <p class="prix-a-venir">Détails du concours et prix à venir...</p>
+                    </div>
                     <a href="#inscription" class="btn-carte">S'inscrire</a>
                 </div>
 
                 <div class="carte">
-                    <span class="badge">Vedette</span>
-                    <h3>Escapade de Rêve</h3>
-                    <p>Pour chaque forfait acheté, 1 $ est versé à une cause sociale. Courez la chance de gagner une escapade !</p>
-                    <p class="prix-a-venir">Détails du concours et prix à venir...</p>
+                    <div>
+                        <span class="badge">Vedette</span>
+                        <h3>Escapade de Rêve</h3>
+                        <p>Pour chaque forfait acheté, 1 $ est versé à une cause sociale. Courez la chance de gagner une escapade !</p>
+                        <p class="prix-a-venir">Détails du concours et prix à venir...</p>
+                    </div>
                     <a href="#inscription" class="btn-carte">Voir les infos</a>
                 </div>
             </div>
@@ -331,4 +358,3 @@
 
 </body>
 </html>
-
