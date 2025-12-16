@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forfeo - Nos Causes Sociales</title>
+    
+    <style>
+        /* --- ON GARDE LE MÊME STYLE DARK MODE QUE L'ACCUEIL --- */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0a192f; /* Bleu Nuit */
+            color: #ccd6f6;
+            line-height: 1.6;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background-color: rgba(10, 25, 47, 0.95);
+            border-bottom: 1px solid #1f2f4d;
+        }
+
+        .logo-img { height: 50px; width: auto; }
+        
+        nav a {
+            color: #a8b2d1;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 20px;
+        }
+        nav a:hover { color: #64ffda; }
+
+        /* --- STYLE SPÉCIFIQUE À LA PAGE CAUSES --- */
+        .container {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 3em;
+            color: #e6f1ff;
+            margin-bottom: 50px;
+        }
+
+        .cause-card {
+            background-color: #112240;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px; /* Espace entre les blocs */
+            box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+            border-left: 5px solid #64ffda; /* Petite ligne verte décorative */
+        }
+
+        .cause-card h2 {
+            color: #64ffda;
+            margin-top: 0;
+        }
+
+        .btn-retour {
+            display: inline-block;
+            margin-top: 40px;
+            color: #64ffda;
+            text-decoration: none;
+            border: 1px solid #64ffda;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        .btn-retour:hover { background-color: rgba(100, 255, 218, 0.1); }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html"><img src="logo.png" alt="Logo Forfeo" class="logo-img"></a>
+        <nav>
+            <a href="index.html">Retour à l'accueil</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1>Les Causes que nous soutenons</h1>
+        <p style="text-align: center; margin-bottom: 50px; font-size: 1.1em;">
+            Chaque don et chaque participation aide directement des organismes locaux qui œuvrent sur le terrain au Québec.
+        </p>
+
+        <div class="cause-card">
+            <h2>🍽️ Lutte contre la pauvreté et aide alimentaire</h2>
+            <p>
+                Au Québec, l'insécurité alimentaire touche des milliers de familles. Nous soutenons les banques alimentaires (comme Moisson Québec) et les comptoirs d'aide qui distribuent des denrées essentielles.
+                Votre soutien permet d'offrir des repas chauds et des paniers d'épicerie aux personnes en situation de précarité.
+            </p>
+        </div>
+
+        <div class="cause-card">
+            <h2>❤️ Santé et Recherche Médicale</h2>
+            <p>
+                Nous finançons des initiatives visant à améliorer la qualité de vie des personnes atteintes de maladies chroniques ou orphelines. 
+                Cela inclut le soutien psychologique, l'aide aux soins à domicile pour les aînés et le financement de la recherche médicale locale.
+            </p>
+        </div>
+
+        <div class="cause-card">
+            <h2>🎓 Éducation et Jeunesse</h2>
+            <p>
+                L'avenir passe par nos jeunes. Nous appuyons des organismes de lutte contre le décrochage scolaire, des maisons de jeunes et des programmes d'aide aux devoirs.
+                L'objectif est d'offrir à chaque enfant, peu importe son milieu, les mêmes chances de réussite.
+            </p>
+        </div>
+
+        <div class="cause-card">
+            <h2>🌿 Environnement et Transition Verte</h2>
+            <p>
+                Face à la crise climatique, nous soutenons des actions concrètes : nettoyage des berges et forêts (comme l'organisme PurNat), verdissement urbain et projets de conservation de la nature québécoise.
+            </p>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="index.html" class="btn-retour">← Retourner aux concours</a>
+        </div>
+
+    </main>
+
+</body>
+</html>
