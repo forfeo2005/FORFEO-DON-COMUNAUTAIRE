@@ -106,12 +106,19 @@
         .btn-principal { background-color: #64ffda; color: #0a192f; }
         .btn-secondaire { border: 2px solid #64ffda; color: #64ffda; }
 
-        /* --- 4. SECTION CONCOURS (Cartes) --- */
+        /* --- 4. SECTION COMMENT ÇA MARCHE (Nouvelle) --- */
+        .steps-section {
+            padding: 80px 20px;
+            background-color: #0d1f3a; /* Un tout petit peu plus clair pour séparer */
+            border-top: 1px solid #1f2f4d;
+            border-bottom: 1px solid #1f2f4d;
+        }
+
+        /* --- 5. SECTION CONCOURS (Cartes) --- */
         .concours-section {
             padding: 80px 20px;
             max-width: 1100px;
             margin: 0 auto;
-            border-top: 1px solid #1f2f4d; /* Séparation subtile avec le hero */
         }
 
         .section-title {
@@ -189,7 +196,7 @@
             background-color: rgba(100, 255, 218, 0.1);
         }
 
-        /* --- 5. SECTION FORMULAIRE --- */
+        /* --- 6. SECTION FORMULAIRE --- */
         .form-section {
             padding: 100px 20px;
             background-color: #020c1b;
@@ -205,7 +212,7 @@
             overflow: hidden;
         }
 
-        /* --- 6. FOOTER --- */
+        /* --- 7. FOOTER --- */
         footer {
             text-align: center;
             padding: 40px;
@@ -239,7 +246,39 @@
             </p>
             <div class="boutons">
                 <a href="causes.html" class="btn btn-principal">Découvrir les causes</a>
-                <a href="#concours" class="btn btn-secondaire">Comment ça marche ?</a>
+                <a href="#comment-ca-marche" class="btn btn-secondaire">Comment ça marche ?</a>
+            </div>
+        </section>
+
+        <section id="comment-ca-marche" class="steps-section">
+            <h2 class="section-title">Comment ça marche ?</h2>
+            
+            <div style="display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; max-width: 1000px; margin: 0 auto; text-align: center;">
+                
+                <div style="flex: 1; min-width: 250px;">
+                    <div style="font-size: 3em; margin-bottom: 10px;">🎯</div>
+                    <h3 style="color: #e6f1ff;">1. Choisissez</h3>
+                    <p style="color: #a8b2d1;">
+                        Optez pour l'<strong>Offre groupée</strong> de jeux indés, tentez le <strong>Grand Tirage</strong> ou visez l'<strong>Escapade de Rêve</strong>.
+                    </p>
+                </div>
+
+                <div style="flex: 1; min-width: 250px;">
+                    <div style="font-size: 3em; margin-bottom: 10px;">❤️</div>
+                    <h3 style="color: #e6f1ff;">2. Soutenez</h3>
+                    <p style="color: #a8b2d1;">
+                        Chaque option a son impact : <strong>100% des profits</strong> pour les jeux ou <strong>1 $ par forfait</strong> versé à une cause locale.
+                    </p>
+                </div>
+
+                <div style="flex: 1; min-width: 250px;">
+                    <div style="font-size: 3em; margin-bottom: 10px;">🏆</div>
+                    <h3 style="color: #e6f1ff;">3. Gagnez</h3>
+                    <p style="color: #a8b2d1;">
+                        Vous êtes automatiquement inscrit pour gagner : <strong>500 $</strong>, une <strong>carte cadeau de 100 $</strong> ou un <strong>Voyage</strong> !
+                    </p>
+                </div>
+
             </div>
         </section>
 
