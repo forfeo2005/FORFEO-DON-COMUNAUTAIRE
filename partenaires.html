@@ -27,10 +27,61 @@
         .pillar-card { background-color: #112240; padding: 30px; border-radius: 8px; flex: 1; min-width: 280px; border-left: 4px solid #64ffda; }
         .pillar-card h3 { color: #e6f1ff; margin-top: 0; }
         .pillar-card p { color: #a8b2d1; font-size: 0.95em; margin-bottom: 0; }
+        
+        /* --- NOUVEAUX STYLES POUR LE PROCESSUS --- */
         .process-steps { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; text-align: center; margin-top: 40px; }
-        .step { flex: 1; min-width: 200px; padding: 20px; background: rgba(17, 34, 64, 0.5); border-radius: 10px; }
+        .step { flex: 1; min-width: 200px; padding: 20px; background: rgba(17, 34, 64, 0.5); border-radius: 10px; display: flex; flex-direction: column; align-items: center; }
         .step-number { font-size: 2.5em; font-weight: bold; color: #64ffda; display: block; margin-bottom: 10px; opacity: 0.5; }
-        .step h4 { color: #e6f1ff; margin-bottom: 10px; }
+        .step h4 { color: #e6f1ff; margin-bottom: 10px; margin-top: 0; }
+        
+        /* Animation flash */
+        @keyframes flash-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(100, 255, 218, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(100, 255, 218, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(100, 255, 218, 0); }
+        }
+        
+        /* Bouton flash générique */
+        .flash-btn {
+            display: inline-block;
+            background-color: #112240;
+            color: #64ffda;
+            border: 2px solid #64ffda;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: all 0.3s;
+            animation: flash-pulse 2s infinite;
+        }
+        .flash-btn:hover {
+            background-color: #64ffda;
+            color: #0a192f;
+            animation: none;
+            transform: translateY(-2px);
+        }
+
+        /* Lien titre spécifique pour l'étape 01 */
+        .step-title-link {
+            text-decoration: none;
+            display: inline-block;
+        }
+        .step-title-link h4 {
+            display: inline-block;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: all 0.3s;
+            color: #64ffda;
+            border: 1px solid transparent;
+        }
+        .step-title-link:hover h4 {
+             border-color: #64ffda;
+             background-color: rgba(100, 255, 218, 0.1);
+             animation: flash-pulse 2s infinite;
+        }
+
+
         details { background-color: #112240; margin-bottom: 15px; border-radius: 5px; border: 1px solid #233554; }
         summary { padding: 15px; cursor: pointer; font-weight: bold; color: #e6f1ff; list-style: none; }
         summary:hover { color: #64ffda; }
@@ -85,22 +136,29 @@
         <section class="section-container" style="background-color: #0d1f3a; border-radius: 15px;">
             <h2>Le modèle en développement</h2>
             <p style="text-align: center; color: #a8b2d1; max-width: 700px; margin: 0 auto;">Voici les grandes lignes du concept sur lequel nous travaillons. Votre avis d'expert terrain sera précieux pour affiner ce processus.</p>
+            
             <div class="process-steps">
                 <div class="step">
                     <span class="step-number">01</span>
-                    <h4>Achat Local</h4>
+                    <a href="https://forfeo.com" target="_blank" class="step-title-link">
+                        <h4>Achat Local ↗</h4>
+                    </a>
                     <p style="font-size: 0.9em; color:#8892b0;">Le consommateur achète un forfait expérience sur Forfeo.</p>
                 </div>
+
                 <div class="step">
                     <span class="step-number">02</span>
                     <h4>Contribution</h4>
                     <p style="font-size: 0.9em; color:#8892b0;">Forfeo prélève 1 % sur ses bénéfices pour le fonds communautaire.</p>
                 </div>
+
                 <div class="step">
                     <span class="step-number">03</span>
                     <h4>Vote Citoyen</h4>
                     <p style="font-size: 0.9em; color:#8892b0;">La communauté vote mensuellement pour les causes prioritaires.</p>
+                    <a href="vote.html" class="flash-btn">Voter pour la cause du mois</a>
                 </div>
+
                 <div class="step">
                     <span class="step-number">04</span>
                     <h4>Impact</h4>
