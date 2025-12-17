@@ -5,24 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forfeo - Nos Causes Sociales</title>
     <style>
-        body { margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0a192f; color: #ccd6f6; line-height: 1.6; }
+        /* --- RÈGLE D'OR MOBILE --- */
+        * { box-sizing: border-box; }
+        
+        body { margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0a192f; color: #ccd6f6; line-height: 1.6; overflow-x: hidden; }
+        
+        /* HEADER */
         header { display: flex; justify-content: space-between; align-items: center; padding: 15px 50px; background-color: rgba(10, 25, 47, 0.95); border-bottom: 1px solid #1f2f4d; position: sticky; top: 0; z-index: 1000; }
-        .logo-img { height: 50px; width: auto; filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2)); }
+        .logo-img { height: 50px; width: auto; }
+        
         nav { display: flex; gap: 20px; align-items: center; }
         nav a { color: #a8b2d1; text-decoration: none; font-weight: 500; transition: color 0.3s; }
         nav a:hover { color: #64ffda; }
+        
         .btn-connexion { border: 1px solid #64ffda; color: #64ffda !important; padding: 8px 20px; border-radius: 4px; transition: background-color 0.3s; }
         .btn-connexion:hover { background-color: rgba(100, 255, 218, 0.1); }
+        
+        /* CONTENU */
         .container { max-width: 900px; margin: 60px auto; padding: 20px; }
         h1 { text-align: center; font-size: 3em; color: #e6f1ff; margin-bottom: 20px; }
+        
         .intro-text { text-align: center; margin-bottom: 60px; font-size: 1.2em; color: #a8b2d1; max-width: 800px; margin-left: auto; margin-right: auto; }
+        
         .cause-card { background-color: #112240; border-radius: 10px; padding: 35px; margin-bottom: 30px; box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7); border-left: 5px solid #64ffda; transition: transform 0.3s; }
-        .cause-card:hover { transform: translateX(10px); }
         .cause-card h2 { color: #64ffda; margin-top: 0; display: flex; align-items: center; gap: 10px; }
         .slogan { font-style: italic; color: #e6f1ff; font-weight: bold; display: block; margin-bottom: 15px; }
+        
         .btn-retour { display: inline-block; margin-top: 40px; color: #64ffda; text-decoration: none; border: 1px solid #64ffda; padding: 12px 30px; border-radius: 5px; transition: background-color 0.3s; font-weight: bold; }
-        .btn-retour:hover { background-color: rgba(100, 255, 218, 0.1); }
+        
         footer { text-align: center; padding: 40px; font-size: 0.9em; color: #8892b0; border-top: 1px solid #1f2f4d; margin-top: 50px; }
+
+        /* --- MOBILE OPTIMIZATION --- */
+        @media only screen and (max-width: 768px) {
+            header { flex-direction: column; padding: 15px 10px; }
+            .logo-img { margin-bottom: 15px; }
+            nav { flex-wrap: wrap; justify-content: center; gap: 15px 10px; width: 100%; }
+            
+            h1 { font-size: 2em; line-height: 1.2; }
+            .intro-text { font-size: 1em; padding: 0 10px; margin-bottom: 30px; }
+            .container { margin: 30px auto; padding: 15px; }
+            
+            .cause-card { padding: 20px; }
+            .cause-card h2 { font-size: 1.3em; flex-direction: column; align-items: flex-start; }
+            
+            .btn-retour { width: 100%; text-align: center; display: block; box-sizing: border-box; }
+        }
     </style>
 </head>
 <body>
@@ -46,18 +73,19 @@
             <p>Pour chaque forfait acheté, vous participez directement à l'impact local. Forfeo s'engage à reverser <strong>1 % de ses bénéfices</strong> à la communauté pour chaque expérience vendue.</p>
             <p>Nous soutenons des organismes locaux qui œuvrent concrètement sur le terrain, là où les besoins sont réels.</p>
         </div>
+        
         <div class="cause-card">
-            <h2>🍽️ Solidarité & lutte contre la pauvreté</h2>
+            <h2>🍽️ Solidarité & pauvreté</h2>
             <span class="slogan">Parce qu’une expérience commence par un besoin essentiel comblé.</span>
             <p>Grâce à chaque forfait acheté, Forfeo finance des banques alimentaires et des organismes communautaires qui luttent contre l’insécurité alimentaire au Québec.</p>
         </div>
         <div class="cause-card">
-            <h2>🏠 Itinérance & inclusion sociale</h2>
+            <h2>🏠 Itinérance & inclusion</h2>
             <span class="slogan">Personne ne devrait être invisible.</span>
             <p>Sur chaque achat, une partie des bénéfices est reversée pour soutenir l'hébergement, les repas et la réinsertion sociale des personnes en situation d’itinérance.</p>
         </div>
         <div class="cause-card">
-            <h2>❤️ Santé, bien-être et recherche</h2>
+            <h2>❤️ Santé & Recherche</h2>
             <span class="slogan">Améliorer la qualité de vie, à tout âge.</span>
             <p>Vos achats contribuent directement au financement d’initiatives en santé, à la recherche sur les maladies chroniques et au soutien des soins à domicile.</p>
         </div>
@@ -67,7 +95,7 @@
             <p>Grâce à votre choix de Forfeo, nous soutenons financièrement des organismes qui luttent contre le décrochage scolaire et favorisent l’égalité des chances pour les jeunes.</p>
         </div>
         <div class="cause-card">
-            <h2>🌿 Environnement & territoires</h2>
+            <h2>🌿 Environnement</h2>
             <span class="slogan">Protéger ce qui rend nos expériences possibles.</span>
             <p>Pour chaque forfait vendu, Forfeo investit dans des actions environnementales locales : nettoyage des berges, verdissement urbain et protection de la nature.</p>
         </div>
@@ -77,7 +105,7 @@
             <a href="vote.html" class="btn-retour" style="background-color: #64ffda; color: #0a192f;">🗳️ Voter pour la cause du mois</a>
         </div>
         <div style="text-align: center;">
-            <a href="index.html" class="btn-retour" style="border: none; color: #8892b0; font-size: 0.9em;">← Retourner à l'accueil</a>
+            <a href="index.html" class="btn-retour" style="border: none; color: #8892b0; font-size: 0.9em; margin-top: 10px;">← Retourner à l'accueil</a>
         </div>
     </main>
     <footer>
