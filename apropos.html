@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À Propos - Forfeo</title>
+    <style>
+        body { margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0a192f; color: #ccd6f6; line-height: 1.6; }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 50px; background-color: rgba(10, 25, 47, 0.95); border-bottom: 1px solid #1f2f4d; }
+        .logo-img { height: 50px; width: auto; }
+        nav a { color: #a8b2d1; text-decoration: none; font-weight: 500; margin-left: 20px; transition: color 0.3s; }
+        nav a:hover { color: #64ffda; }
+        .container { max-width: 900px; margin: 60px auto; padding: 20px; }
+        h1 { text-align: center; font-size: 2.5em; color: #e6f1ff; margin-bottom: 40px; }
+        .about-section { display: flex; align-items: center; gap: 40px; margin-bottom: 60px; flex-wrap: wrap; }
+        .about-text { flex: 1; }
+        .about-img { flex: 1; min-width: 300px; background-color: #112240; height: 300px; border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 1px dashed #64ffda; color: #64ffda; font-size: 1.2em; }
+        h2 { color: #64ffda; }
+        .highlight { color: #e6f1ff; font-weight: bold; }
+        footer { text-align: center; padding: 40px; font-size: 0.9em; color: #8892b0; border-top: 1px solid #1f2f4d; margin-top: 50px; }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html"><img src="logo.png" alt="Logo Forfeo" class="logo-img"></a>
+        <nav>
+            <a href="index.html">Retour à l'accueil</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1>L'histoire de Forfeo</h1>
+
+        <div class="about-section">
+            <div class="about-text">
+                <h2>Notre Mission</h2>
+                <p>Forfeo est né d'une idée simple : <span class="highlight">transformer chaque achat plaisir en un geste solidaire.</span></p>
+                <p>Nous voulions créer une plateforme où les Québécois peuvent découvrir des expériences locales incroyables (restaurants, activités, détente) tout en sachant qu'ils contribuent concrètement à leur communauté.</p>
+            </div>
+            <div class="about-img">📷 Photo Équipe / Bureau</div>
+        </div>
+
+        <div class="about-section" style="flex-direction: row-reverse;">
+            <div class="about-text">
+                <h2>Pourquoi le "Double Impact" ?</h2>
+                <p>Nous croyons que le commerce local et l'entraide sociale doivent marcher main dans la main.</p>
+                <p>En reversant <strong>1 $ par forfait</strong> à même nos bénéfices, nous prouvons qu'une entreprise peut être rentable tout en ayant un cœur. Pas de dons complexes, juste un engagement clair et transparent.</p>
+            </div>
+             <div class="about-img">🤝 Photo Engagement</div>
+        </div>
+    </main>
+
+    <footer>
+        <p>
+            &copy; 2025 Forfeo. Fait avec passion au Québec.<br>
+            <a href="confidentialite.html" style="color: #64ffda; text-decoration: none; font-size: 0.9em;">Politique de confidentialité & Conditions</a>
+        </p>
+    </footer>
+</body>
+</html>
