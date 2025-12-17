@@ -8,9 +8,7 @@
     <style>
         /* --- 1. CONFIGURATION GÉNÉRALE --- */
         html { scroll-behavior: smooth; }
-        
-        /* Règle d'or pour le mobile : inclure les bordures dans la largeur */
-        * { box-sizing: border-box; }
+        * { box-sizing: border-box; } /* Important pour le mobile */
 
         body {
             margin: 0;
@@ -19,10 +17,49 @@
             background-color: #0a192f;
             color: #ccd6f6;
             line-height: 1.6;
-            overflow-x: hidden; /* Empêche le défilement horizontal */
+            overflow-x: hidden;
         }
 
-        /* --- 2. HEADER & NAVIGATION --- */
+        /* --- 2. BANDEAU D'ALERTE ANIMÉ (NOUVEAU) --- */
+        .top-banner {
+            background: linear-gradient(45deg, #0a192f, #112240, #64ffda, #0a192f);
+            background-size: 400% 400%;
+            color: #ffffff;
+            text-align: center;
+            padding: 12px;
+            font-size: 0.95em;
+            position: relative;
+            z-index: 2000;
+            border-bottom: 1px solid #64ffda;
+            animation: gradientBG 8s ease infinite; /* Animation du fond */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .top-banner strong { color: #ffffff; text-shadow: 0 0 5px rgba(100, 255, 218, 0.5); }
+        
+        .btn-banner {
+            background-color: rgba(10, 25, 47, 0.8);
+            color: #64ffda;
+            padding: 4px 12px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.85em;
+            border: 1px solid #64ffda;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        .btn-banner:hover { background-color: #64ffda; color: #0a192f; }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* --- 3. HEADER & NAVIGATION --- */
         header {
             display: flex;
             justify-content: space-between;
@@ -36,11 +73,8 @@
             box-shadow: 0 10px 30px -10px rgba(2,12,27,0.7);
         }
 
-        .logo-img {
-            height: 50px;
-            width: auto;
-            transition: transform 0.3s;
-        }
+        .logo-img { height: 50px; width: auto; transition: transform 0.3s; }
+        .logo-img:hover { transform: scale(1.05); }
         
         nav { display: flex; gap: 20px; align-items: center; }
 
@@ -60,7 +94,7 @@
             border-radius: 4px;
         }
 
-        /* --- 3. SECTION HERO --- */
+        /* --- 4. SECTION HERO --- */
         .hero-section {
             padding: 120px 20px;
             max-width: 1000px;
@@ -89,22 +123,8 @@
             color: #8892b0;
         }
 
-        .boutons { 
-            display: flex; 
-            justify-content: center; 
-            gap: 20px; 
-            flex-wrap: wrap; 
-        }
-
-        .btn {
-            padding: 18px 28px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1em;
-            display: inline-block;
-        }
-
+        .boutons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .btn { padding: 18px 28px; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 1em; display: inline-block; }
         .btn-principal { background-color: #64ffda; color: #0a192f; }
         .btn-secondaire { border: 2px solid #64ffda; color: #64ffda; }
 
@@ -129,174 +149,72 @@
             animation: pulse-green 2s infinite; 
         }
 
-        /* --- 4. SECTIONS CONTENU --- */
-        .steps-section {
-            padding: 80px 20px;
-            background-color: #0d1f3a;
-            border-top: 1px solid #1f2f4d;
-            border-bottom: 1px solid #1f2f4d;
-        }
-
-        /* Container flex standard pour desktop */
-        .flex-container {
-            display: flex; 
-            gap: 40px; 
-            justify-content: center; 
-            flex-wrap: wrap; 
-            max-width: 1000px; 
-            margin: 0 auto; 
-            text-align: center;
-        }
+        /* --- 5. SECTIONS CONTENU --- */
+        .steps-section { padding: 80px 20px; background-color: #0d1f3a; border-top: 1px solid #1f2f4d; border-bottom: 1px solid #1f2f4d; }
         
-        .flex-item {
-            flex: 1; 
-            min-width: 250px; /* Sur desktop */
-        }
+        .flex-container { display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; max-width: 1000px; margin: 0 auto; text-align: center; }
+        .flex-item { flex: 1; min-width: 250px; }
+        .step-link { text-decoration: none; display: block; border-radius: 10px; padding: 10px; }
 
-        .step-link {
-            text-decoration: none;
-            display: block;
-            border-radius: 10px;
-            padding: 10px;
-        }
+        .concours-section { padding: 80px 20px; max-width: 1100px; margin: 0 auto; margin-bottom: 50px; }
+        .section-title { text-align: center; font-size: 2.5em; color: #e6f1ff; margin-bottom: 50px; }
 
-        .concours-section {
-            padding: 80px 20px;
-            max-width: 1100px;
-            margin: 0 auto;
-            margin-bottom: 50px; 
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5em;
-            color: #e6f1ff;
-            margin-bottom: 50px;
-        }
-
-        .cartes-container {
-            display: flex;
-            gap: 30px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
+        .cartes-container { display: flex; gap: 30px; flex-wrap: wrap; justify-content: center; }
         .carte {
-            background-color: #112240;
-            padding: 40px 30px;
-            border-radius: 8px;
-            flex: 1;
-            min-width: 280px;
-            max-width: 350px;
-            box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
-            position: relative;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            background-color: #112240; padding: 40px 30px; border-radius: 8px; flex: 1; min-width: 280px; max-width: 350px;
+            box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7); position: relative; text-align: center;
+            display: flex; flex-direction: column; justify-content: space-between;
         }
 
-        .badge {
-            position: absolute;
-            top: -12px;
-            right: 20px;
-            background-color: #64ffda;
-            color: #0a192f;
-            font-size: 0.8em;
-            font-weight: bold;
-            padding: 5px 12px;
-            border-radius: 20px;
-        }
-
+        .badge { position: absolute; top: -12px; right: 20px; background-color: #64ffda; color: #0a192f; font-size: 0.8em; font-weight: bold; padding: 5px 12px; border-radius: 20px; }
         .carte h3 { color: #e6f1ff; margin-top: 10px; font-size: 1.5em; }
         .carte p { color: #8892b0; font-size: 1em; margin-bottom: 20px;}
         .prix-a-venir { font-size: 1em !important; color: #64ffda !important; font-style: italic; margin: 25px 0; }
+        .btn-carte { display: inline-block; border: 1px solid #64ffda; color: #64ffda; text-decoration: none; padding: 12px 25px; border-radius: 4px; margin-top: 10px; width: 80%; margin-bottom: 10px; }
+        .btn-video { display: inline-block; background-color: #0a192f; color: #64ffda; border: 1px dashed #64ffda; padding: 10px 20px; border-radius: 4px; text-decoration: none; font-size: 0.9em; width: 80%; }
 
-        .btn-carte {
-            display: inline-block;
-            border: 1px solid #64ffda;
-            color: #64ffda;
-            text-decoration: none;
-            padding: 12px 25px;
-            border-radius: 4px;
-            margin-top: 10px;
-            width: 80%;
-            margin-bottom: 10px;
-        }
-
-        .btn-video {
-            display: inline-block;
-            background-color: #0a192f;
-            color: #64ffda;
-            border: 1px dashed #64ffda;
-            padding: 10px 20px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-size: 0.9em;
-            width: 80%;
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px;
-            font-size: 0.9em;
-            color: #8892b0;
-            background-color: #0a192f;
-            border-top: 1px solid #1f2f4d;
-        }
+        footer { text-align: center; padding: 40px; font-size: 0.9em; color: #8892b0; background-color: #0a192f; border-top: 1px solid #1f2f4d; }
 
         /* =========================================
            ⚡ VERSION MOBILE OPTIMISÉE (Max 768px) ⚡
         ========================================= */
         @media only screen and (max-width: 768px) {
             
-            /* Header compact */
-            header {
-                flex-direction: column;
-                padding: 15px 10px; /* Moins de padding */
-            }
+            /* Ajustement du bandeau pour mobile */
+            .top-banner { flex-direction: column; padding: 15px; text-align: center; line-height: 1.4; }
+            .btn-banner { margin-top: 5px; }
+
+            /* Header */
+            header { flex-direction: column; padding: 15px 10px; }
             .logo-img { margin-bottom: 15px; }
-            
-            /* Menu qui prend toute la largeur et wrap proprement */
-            nav {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 15px 10px; /* gap vertical / horizontal */
-                width: 100%;
-            }
+            nav { flex-wrap: wrap; justify-content: center; gap: 15px 10px; width: 100%; }
             nav a { font-size: 0.9em; padding: 5px; }
 
-            /* Textes réduits pour éviter la coupure */
+            /* Textes */
             h1 { font-size: 2.2em; line-height: 1.2; }
             .subtitle { font-size: 1em; padding: 0 10px; }
             .section-title { font-size: 1.8em; margin-bottom: 30px; }
 
-            /* Sections plus compactes */
+            /* Sections */
             .hero-section { padding: 60px 15px; }
-            .steps-section { padding: 40px 15px; }
-            .concours-section { padding: 40px 15px; }
+            .steps-section, .concours-section { padding: 40px 15px; }
 
-            /* Boutons pleine largeur */
+            /* Éléments */
             .boutons { flex-direction: column; width: 100%; gap: 15px; }
             .btn, .btn-vote-anime { width: 100%; text-align: center; justify-content: center; }
 
-            /* On force l'empilement vertical propre */
-            .flex-container, .cartes-container { 
-                flex-direction: column; 
-                gap: 40px; 
-            }
-            
-            /* On enlève les contraintes de largeur minimum qui cassent le mobile */
-            .flex-item, .carte { 
-                width: 100%; 
-                min-width: 0; /* Important */
-                max-width: none; 
-            }
+            .flex-container, .cartes-container { flex-direction: column; gap: 40px; }
+            .flex-item, .carte { width: 100%; min-width: 0; max-width: none; }
         }
     </style>
 </head>
 
 <body>
+
+    <div class="top-banner">
+        <span>✨ Découvrez le nouveau visage solidaire de Forfeo : <strong>1 % pour le Québec !</strong></span>
+        <a href="#comment-ca-marche" class="btn-banner">En savoir plus</a>
+    </div>
 
     <header>
         <a href="index.html"><img src="logo.png" alt="Logo Forfeo" class="logo-img"></a>
