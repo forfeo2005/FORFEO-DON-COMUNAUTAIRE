@@ -4,77 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Politique de Confidentialité et Conditions - Forfeo</title>
-    
     <style>
-        /* --- STYLE DARK MODE --- */
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0a192f;
-            color: #ccd6f6;
-            line-height: 1.6;
-        }
-
-        header {
-            padding: 15px 50px;
-            background-color: rgba(10, 25, 47, 0.95);
-            border-bottom: 1px solid #1f2f4d;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo-img { height: 50px; width: auto; }
-        nav a { color: #a8b2d1; text-decoration: none; font-weight: 500; }
+        body { margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0a192f; color: #ccd6f6; line-height: 1.6; }
+        header { padding: 15px 50px; background-color: rgba(10, 25, 47, 0.95); border-bottom: 1px solid #1f2f4d; display: flex; justify-content: space-between; align-items: center; }
+        .logo-img { height: 50px; width: auto; filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2)); }
+        nav { display: flex; gap: 20px; align-items: center; }
+        nav a { color: #a8b2d1; text-decoration: none; font-weight: 500; transition: color 0.3s; }
         nav a:hover { color: #64ffda; }
-
-        .container {
-            max-width: 900px;
-            margin: 50px auto;
-            padding: 20px;
-        }
-
+        .btn-connexion { border: 1px solid #64ffda; color: #64ffda !important; padding: 8px 20px; border-radius: 4px; transition: background-color 0.3s; }
+        .btn-connexion:hover { background-color: rgba(100, 255, 218, 0.1); }
+        .container { max-width: 900px; margin: 50px auto; padding: 20px; }
         h1 { color: #e6f1ff; border-bottom: 2px solid #64ffda; padding-bottom: 10px; margin-bottom: 30px; }
         h2 { color: #64ffda; margin-top: 40px; border-bottom: 1px solid #1f2f4d; padding-bottom: 5px; }
         h3 { color: #e6f1ff; margin-top: 25px; font-size: 1.1em; }
-        
         p, ul { color: #a8b2d1; font-size: 0.95em; text-align: justify; }
         li { margin-bottom: 10px; }
-        
-        .legal-box {
-            background-color: #112240;
-            padding: 40px;
-            border-radius: 10px;
-            border: 1px solid #1f2f4d;
-        }
-
-        .contact-info {
-            background-color: rgba(100, 255, 218, 0.1);
-            padding: 15px;
-            border-radius: 5px;
-            border-left: 3px solid #64ffda;
-            margin-top: 20px;
-            color: #e6f1ff;
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px;
-            font-size: 0.9em;
-            color: #8892b0;
-            border-top: 1px solid #1f2f4d;
-            margin-top: 50px;
-        }
+        .legal-box { background-color: #112240; padding: 40px; border-radius: 10px; border: 1px solid #1f2f4d; }
+        .contact-info { background-color: rgba(100, 255, 218, 0.1); padding: 15px; border-radius: 5px; border-left: 3px solid #64ffda; margin-top: 20px; color: #e6f1ff; }
+        footer { text-align: center; padding: 40px; font-size: 0.9em; color: #8892b0; border-top: 1px solid #1f2f4d; margin-top: 50px; }
     </style>
 </head>
-
 <body>
-
     <header>
         <a href="index.html"><img src="logo.png" alt="Logo Forfeo" class="logo-img"></a>
         <nav>
-            <a href="index.html">Retour à l'accueil</a>
+            <a href="apropos.html">À Propos</a>
+            <a href="causes.html">Causes</a>
+            <a href="index.html#concours">Concours</a>
+            <a href="faq.html">Aide</a>
+            <a href="inscription.html">Participer</a>
+            <a href="connexion.html" class="btn-connexion">Connexion</a>
         </nav>
     </header>
 
@@ -85,23 +44,19 @@
 
             <h2>1. Protection des renseignements personnels (Loi 25)</h2>
             <p>Forfeo accorde une grande importance à la confidentialité de vos données. Conformément aux lois applicables au Québec, voici comment nous gérons vos informations.</p>
-            
             <h3>Responsable de la protection des données</h3>
             <p>L'entité responsable de l'application de la Loi 25 chez Forfeo est :</p>
-            
             <div class="contact-info">
                 <strong>Responsable :</strong> FORFEO INC.<br>
                 <strong>Courriel :</strong> client@forfeo.com<br>
                 <strong>Rôle :</strong> Administration et protection des données
             </div>
-
             <h3>Données collectées</h3>
             <ul>
                 <li><strong>Identité :</strong> Nom, prénom (via les formulaires d'inscription et de vote).</li>
                 <li><strong>Contact :</strong> Adresse courriel.</li>
                 <li><strong>Contenu :</strong> Liens vers vos vidéos (TikTok, YouTube, etc.).</li>
             </ul>
-
             <h3>Utilisation des données</h3>
             <p>Vos données sont utilisées uniquement pour : gérer votre participation aux concours, vous contacter si vous gagnez, et afficher vos vidéos dans la galerie (avec votre accord implicite lors de la soumission).</p>
 
@@ -128,13 +83,10 @@
                 <li>Vous accordez à Forfeo le droit non exclusif d'afficher ce contenu sur son site web (via intégration).</li>
                 <li>Forfeo se réserve le droit de retirer tout contenu jugé inapproprié sans préavis.</li>
             </ul>
-
         </div>
     </main>
-    
     <footer>
         <p>&copy; 2025 Forfeo. Fait avec passion au Québec.</p>
     </footer>
-
 </body>
 </html>
