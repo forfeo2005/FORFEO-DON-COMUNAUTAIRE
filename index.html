@@ -8,7 +8,7 @@
     <style>
         /* --- 1. CONFIGURATION GÉNÉRALE --- */
         html { scroll-behavior: smooth; }
-        * { box-sizing: border-box; } /* Important pour le mobile */
+        * { box-sizing: border-box; }
 
         body {
             margin: 0;
@@ -20,7 +20,7 @@
             overflow-x: hidden;
         }
 
-        /* --- 2. BANDEAU D'ALERTE ANIMÉ (NOUVEAU) --- */
+        /* --- 2. BANDEAU D'ALERTE ANIMÉ --- */
         .top-banner {
             background: linear-gradient(45deg, #0a192f, #112240, #64ffda, #0a192f);
             background-size: 400% 400%;
@@ -31,7 +31,7 @@
             position: relative;
             z-index: 2000;
             border-bottom: 1px solid #64ffda;
-            animation: gradientBG 8s ease infinite; /* Animation du fond */
+            animation: gradientBG 8s ease infinite;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -128,7 +128,6 @@
         .btn-principal { background-color: #64ffda; color: #0a192f; }
         .btn-secondaire { border: 2px solid #64ffda; color: #64ffda; }
 
-        /* Animation Bouton Vote */
         @keyframes pulse-green {
             0% { box-shadow: 0 0 0 0 rgba(100, 255, 218, 0.7); transform: scale(1); }
             70% { box-shadow: 0 0 0 15px rgba(100, 255, 218, 0); transform: scale(1.05); }
@@ -173,36 +172,81 @@
         .btn-carte { display: inline-block; border: 1px solid #64ffda; color: #64ffda; text-decoration: none; padding: 12px 25px; border-radius: 4px; margin-top: 10px; width: 80%; margin-bottom: 10px; }
         .btn-video { display: inline-block; background-color: #0a192f; color: #64ffda; border: 1px dashed #64ffda; padding: 10px 20px; border-radius: 4px; text-decoration: none; font-size: 0.9em; width: 80%; }
 
+        /* --- FOOTER & RÉSEAUX SOCIAUX --- */
         footer { text-align: center; padding: 40px; font-size: 0.9em; color: #8892b0; background-color: #0a192f; border-top: 1px solid #1f2f4d; }
+        
+        .social-title {
+            color: #64ffda;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8em;
+            animation: textPulse 3s infinite;
+        }
+
+        .social-links { margin-bottom: 30px; display: flex; justify-content: center; gap: 25px; }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #112240;
+            border: 1px solid #233554;
+            color: #a8b2d1;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            /* L'animation qui fait flotter les icônes */
+            animation: floatingIcon 3s ease-in-out infinite;
+        }
+
+        .social-link svg { width: 24px; height: 24px; fill: currentColor; transition: fill 0.3s; }
+
+        /* Décalage des animations pour que ce soit fluide */
+        .social-link:nth-child(1) { animation-delay: 0s; }
+        .social-link:nth-child(2) { animation-delay: 0.5s; }
+        .social-link:nth-child(3) { animation-delay: 1s; }
+
+        /* Effet au survol (La magie !) */
+        .social-link:hover {
+            background-color: #0a192f;
+            color: #64ffda;
+            border-color: #64ffda;
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: 0 0 15px rgba(100, 255, 218, 0.4); /* Effet Néon */
+        }
+
+        @keyframes floatingIcon {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes textPulse {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
 
         /* =========================================
            ⚡ VERSION MOBILE OPTIMISÉE (Max 768px) ⚡
         ========================================= */
         @media only screen and (max-width: 768px) {
-            
-            /* Ajustement du bandeau pour mobile */
             .top-banner { flex-direction: column; padding: 15px; text-align: center; line-height: 1.4; }
             .btn-banner { margin-top: 5px; }
-
-            /* Header */
             header { flex-direction: column; padding: 15px 10px; }
             .logo-img { margin-bottom: 15px; }
             nav { flex-wrap: wrap; justify-content: center; gap: 15px 10px; width: 100%; }
             nav a { font-size: 0.9em; padding: 5px; }
-
-            /* Textes */
             h1 { font-size: 2.2em; line-height: 1.2; }
             .subtitle { font-size: 1em; padding: 0 10px; }
             .section-title { font-size: 1.8em; margin-bottom: 30px; }
-
-            /* Sections */
             .hero-section { padding: 60px 15px; }
             .steps-section, .concours-section { padding: 40px 15px; }
-
-            /* Éléments */
             .boutons { flex-direction: column; width: 100%; gap: 15px; }
             .btn, .btn-vote-anime { width: 100%; text-align: center; justify-content: center; }
-
             .flex-container, .cartes-container { flex-direction: column; gap: 40px; }
             .flex-item, .carte { width: 100%; min-width: 0; max-width: none; }
         }
@@ -245,23 +289,20 @@
 
         <section id="comment-ca-marche" class="steps-section">
             <h2 class="section-title">Comment ça marche ?</h2>
-            
             <div class="flex-container">
                 <div class="flex-item">
-                    <a href="https://isow.forfeo.com/giftcards" target="_blank" class="step-link">
+                    <a href="https://isow.forfeo.com/giftcards" target="_blank" class="step-link" title="Cliquez pour choisir votre forfait">
                         <div style="font-size: 3em; margin-bottom: 10px;">🎯</div>
                         <h3 style="color: #e6f1ff;">1. Choisissez</h3>
                         <p style="color: #a8b2d1;">Choisissez votre forfait.</p>
                         <span style="color: #64ffda; font-size: 0.8em; text-decoration: underline;">Accéder à la boutique →</span>
                     </a>
                 </div>
-
                 <div class="flex-item">
                     <div style="font-size: 3em; margin-bottom: 10px;">❤️</div>
                     <h3 style="color: #e6f1ff;">2. Soutenez</h3>
                     <p style="color: #a8b2d1;">1 % des bénéfices est reversé à une cause que Forfeo soutient.</p>
                 </div>
-
                 <div class="flex-item">
                     <div style="font-size: 3em; margin-bottom: 10px;">🏆</div>
                     <h3 style="color: #e6f1ff;">3. Gagnez</h3>
@@ -272,7 +313,6 @@
 
         <section id="concours" class="concours-section">
             <h2 class="section-title">Concours en vedette</h2>
-            
             <div class="cartes-container">
                 <div class="carte">
                     <div>
@@ -286,7 +326,6 @@
                         <a href="videos.html" class="btn-video">▶ Vidéo des Forféens</a>
                     </div>
                 </div>
-
                 <div class="carte">
                     <div>
                         <span class="badge">Populaire</span>
@@ -296,7 +335,6 @@
                     </div>
                     <a href="inscription.html" class="btn-carte">S'inscrire</a>
                 </div>
-
                 <div class="carte">
                     <div>
                         <span class="badge">Vedette</span>
@@ -312,6 +350,22 @@
     </main>
     
     <footer>
+        <div class="social-title">Suivez notre impact</div>
+        
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/forfeo-inc-468326385" target="_blank" class="social-link" title="Suivez-nous sur LinkedIn">
+                <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+
+            <a href="https://www.facebook.com/share/1Ck2JnHSmf/?mibextid=wwXIfr" target="_blank" class="social-link" title="Suivez-nous sur Facebook">
+                <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            
+            <a href="https://vt.tiktok.com/ZSP9FsTvF/" target="_blank" class="social-link" title="Suivez-nous sur TikTok">
+                <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93v6.16c0 2.52-1.12 4.88-2.91 6.52-1.78 1.63-4.15 2.5-6.55 2.35-4.51-.27-8.07-4.04-8.03-8.59.04-4.54 3.73-8.24 8.28-8.24.26 0 .52.01.78.04v4.21c-.27-.02-.54-.03-.81-.03-2.18 0-3.95 1.77-3.95 3.95s1.77 3.95 3.95 3.95c2.18 0 3.95-1.77 3.95-3.95V.02z"/></svg>
+            </a>
+        </div>
+
         <p>
             &copy; 2025 Forfeo. Fait avec passion au Québec.<br>
             <a href="confidentialite.html" style="color: #64ffda; text-decoration: none; font-size: 0.9em;">Politique de confidentialité & Conditions</a>
