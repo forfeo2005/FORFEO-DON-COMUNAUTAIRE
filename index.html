@@ -8,6 +8,10 @@
     <style>
         /* --- 1. CONFIGURATION GÉNÉRALE --- */
         html { scroll-behavior: smooth; }
+        
+        /* Règle d'or pour le mobile : inclure les bordures dans la largeur */
+        * { box-sizing: border-box; }
+
         body {
             margin: 0;
             padding: 0;
@@ -46,7 +50,6 @@
             font-weight: 500;
             transition: color 0.3s;
             font-size: 0.95em;
-            white-space: nowrap; /* Empêche le texte de se casser */
         }
         nav a:hover { color: #64ffda; }
 
@@ -134,7 +137,8 @@
             border-bottom: 1px solid #1f2f4d;
         }
 
-        .step-container {
+        /* Container flex standard pour desktop */
+        .flex-container {
             display: flex; 
             gap: 40px; 
             justify-content: center; 
@@ -142,6 +146,11 @@
             max-width: 1000px; 
             margin: 0 auto; 
             text-align: center;
+        }
+        
+        .flex-item {
+            flex: 1; 
+            min-width: 250px; /* Sur desktop */
         }
 
         .step-link {
@@ -237,44 +246,52 @@
         }
 
         /* =========================================
-           ⚡ VERSION MOBILE (MEDIA QUERIES) ⚡
-           C'est ici que la magie opère pour le téléphone
+           ⚡ VERSION MOBILE OPTIMISÉE (Max 768px) ⚡
         ========================================= */
         @media only screen and (max-width: 768px) {
             
-            /* Ajustement Header */
+            /* Header compact */
             header {
                 flex-direction: column;
-                padding: 15px 20px;
+                padding: 15px 10px; /* Moins de padding */
             }
             .logo-img { margin-bottom: 15px; }
+            
+            /* Menu qui prend toute la largeur et wrap proprement */
             nav {
                 flex-wrap: wrap;
                 justify-content: center;
-                gap: 15px;
+                gap: 15px 10px; /* gap vertical / horizontal */
+                width: 100%;
             }
-            nav a { font-size: 0.85em; }
+            nav a { font-size: 0.9em; padding: 5px; }
 
-            /* Ajustement Textes */
-            h1 { font-size: 2.2em; } /* Texte beaucoup plus petit */
-            .subtitle { font-size: 1em; }
-            .section-title { font-size: 1.8em; }
+            /* Textes réduits pour éviter la coupure */
+            h1 { font-size: 2.2em; line-height: 1.2; }
+            .subtitle { font-size: 1em; padding: 0 10px; }
+            .section-title { font-size: 1.8em; margin-bottom: 30px; }
 
-            /* Ajustement Marges */
-            .hero-section { padding: 60px 20px; }
-            .steps-section { padding: 40px 20px; }
-            .concours-section { padding: 40px 20px; }
+            /* Sections plus compactes */
+            .hero-section { padding: 60px 15px; }
+            .steps-section { padding: 40px 15px; }
+            .concours-section { padding: 40px 15px; }
 
-            /* Ajustement Boutons */
-            .boutons { flex-direction: column; align-items: center; width: 100%; }
-            .btn, .btn-vote-anime { width: 100%; box-sizing: border-box; text-align: center; justify-content: center; }
+            /* Boutons pleine largeur */
+            .boutons { flex-direction: column; width: 100%; gap: 15px; }
+            .btn, .btn-vote-anime { width: 100%; text-align: center; justify-content: center; }
 
-            /* Cartes prennent toute la largeur */
-            .carte { width: 100%; max-width: none; min-width: 0; }
-            .cartes-container { flex-direction: column; }
+            /* On force l'empilement vertical propre */
+            .flex-container, .cartes-container { 
+                flex-direction: column; 
+                gap: 40px; 
+            }
             
-            /* Étapes */
-            .step-container { flex-direction: column; gap: 40px; }
+            /* On enlève les contraintes de largeur minimum qui cassent le mobile */
+            .flex-item, .carte { 
+                width: 100%; 
+                min-width: 0; /* Important */
+                max-width: none; 
+            }
         }
     </style>
 </head>
@@ -311,8 +328,8 @@
         <section id="comment-ca-marche" class="steps-section">
             <h2 class="section-title">Comment ça marche ?</h2>
             
-            <div class="step-container">
-                <div style="flex: 1;">
+            <div class="flex-container">
+                <div class="flex-item">
                     <a href="https://isow.forfeo.com/giftcards" target="_blank" class="step-link">
                         <div style="font-size: 3em; margin-bottom: 10px;">🎯</div>
                         <h3 style="color: #e6f1ff;">1. Choisissez</h3>
@@ -321,13 +338,13 @@
                     </a>
                 </div>
 
-                <div style="flex: 1;">
+                <div class="flex-item">
                     <div style="font-size: 3em; margin-bottom: 10px;">❤️</div>
                     <h3 style="color: #e6f1ff;">2. Soutenez</h3>
                     <p style="color: #a8b2d1;">1 % des bénéfices est reversé à une cause que Forfeo soutient.</p>
                 </div>
 
-                <div style="flex: 1;">
+                <div class="flex-item">
                     <div style="font-size: 3em; margin-bottom: 10px;">🏆</div>
                     <h3 style="color: #e6f1ff;">3. Gagnez</h3>
                     <p style="color: #a8b2d1;">Vous êtes automatiquement inscrit et courez la chance de gagner à l'un de nos concours du moment.</p>
