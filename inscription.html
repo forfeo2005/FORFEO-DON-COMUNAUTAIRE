@@ -43,6 +43,7 @@
         .subtitle { text-align: center; color: #8892b0; margin-bottom: 30px; }
 
         label { display: block; color: #64ffda; margin-bottom: 8px; font-weight: bold; margin-top: 20px; }
+        .hint { font-size: 0.85em; color: #8892b0; margin-top: -5px; margin-bottom: 10px; font-style: italic; }
         
         input, select, textarea { 
             width: 100%; 
@@ -60,6 +61,7 @@
             background-color: #0a192f;
             color: #a8b2d1;
             cursor: pointer;
+            border: 1px dashed #64ffda;
         }
 
         .btn-submit { 
@@ -113,7 +115,7 @@
             <form action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
                 
                 <input type="hidden" name="access_key" value="c7c665be-ec7f-4455-9a5e-11ebb323fff9">
-                <input type="hidden" name="subject" value="Nouvelle Inscription Concours (+ Fichier)">
+                <input type="hidden" name="subject" value="Nouvelle Inscription Concours">
                 
                 <input type="hidden" name="redirect" value="https://forfeo2005.github.io/FORFEO-DON-COMUNAUTAIRE/merci.html">
 
@@ -127,15 +129,19 @@
                 <select name="concours" id="concours">
                     <option value="Grand Tirage">Le Grand Tirage (Preuve d'achat)</option>
                     <option value="Escapade de Rêve">Escapade de Rêve</option>
-                    <option value="Vivez l'expérience">Vivez l'expérience (Photo/Vidéo)</option>
+                    <option value="Vivez l'expérience">Vivez l'expérience (Lien Vidéo)</option>
                 </select>
 
-                <label for="preuve">Preuve d'achat ou Numéro de commande</label>
+                <label for="preuve">Preuve d'achat (Numéro de commande)</label>
                 <input type="text" name="preuve" id="preuve" placeholder="Ex: #CMD-12345">
 
-                <label for="fichier">Ajouter une Photo ou une Vidéo</label>
-                <p style="font-size: 0.8em; color: #8892b0; margin-bottom: 5px; margin-top: 0;">(Formats acceptés : jpg, png, mp4, mov. Max 10 Mo)</p>
-                <input type="file" name="attachment" id="fichier" accept="image/*,video/*">
+                <label for="fichier">Ajouter une Photo (Preuve d'achat / Souvenir)</label>
+                <p class="hint">Formats : .jpg, .png (Max 2 Mo). Pour les vidéos, utilisez le champ lien ci-dessous.</p>
+                <input type="file" name="attachment" id="fichier" accept="image/png, image/jpeg">
+
+                <label for="lien_video">Lien vers votre Vidéo (Obligatoire pour le concours vidéo)</label>
+                <p class="hint">Collez ici le lien de votre vidéo (TikTok, YouTube, Google Drive, etc.)</p>
+                <input type="url" name="lien_video" id="lien_video" placeholder="https://tiktok.com/..." >
 
                 <button type="submit" class="btn-submit">Valider ma participation</button>
             </form>
