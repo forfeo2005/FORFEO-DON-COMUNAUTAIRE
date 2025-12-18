@@ -7,38 +7,32 @@
     <style>
         html { scroll-behavior: smooth; }
         body { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background-color: #0a192f; color: #ccd6f6; line-height: 1.6; }
-        
         header { display: flex; justify-content: space-between; align-items: center; padding: 15px 50px; background-color: rgba(10, 25, 47, 0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #1f2f4d; }
         .logo-img { height: 50px; }
         nav { display: flex; gap: 20px; align-items: center; }
         nav a { color: #a8b2d1; text-decoration: none; }
         nav a:hover { color: #64ffda; }
         .btn-connexion { border: 1px solid #64ffda; color: #64ffda !important; padding: 8px 20px; border-radius: 4px; }
-
         .container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; }
         h1 { color: #e6f1ff; text-align: center; font-size: 2.5em; }
         h2 { color: #e6f1ff; border-left: 4px solid #64ffda; padding-left: 15px; margin-top: 60px; margin-bottom: 30px; }
+        
+        /* BOX STATISTIQUES (AJOUTÉ) */
+        .stats-context { background: rgba(100, 255, 218, 0.05); padding: 30px; border-radius: 10px; margin-bottom: 50px; border: 1px solid #233554; }
+        .stats-grid { display: flex; gap: 30px; margin-top: 20px; flex-wrap: wrap; }
+        .stat-item { flex: 1; min-width: 200px; text-align: center; }
+        .stat-number { font-size: 2.5em; font-weight: bold; color: #64ffda; display: block; }
+        .stat-desc { font-size: 0.9em; color: #a8b2d1; }
 
         /* ÉLIGIBILITÉ */
         .eligibility-box { background-color: #112240; border: 1px solid #233554; border-radius: 10px; padding: 40px; display: flex; flex-wrap: wrap; gap: 40px; align-items: center; }
         .check-item { display: flex; align-items: center; margin-bottom: 15px; color: #a8b2d1; }
         .check-icon { color: #64ffda; font-weight: bold; margin-right: 15px; font-size: 1.2em; }
 
-        /* VALEURS */
-        .value-grid { display: flex; gap: 30px; margin-top: 30px; flex-wrap: wrap; }
-        .value-card { flex: 1; min-width: 250px; text-align: center; padding: 20px; background: rgba(17, 34, 64, 0.3); border-radius: 10px; border: 1px solid transparent; transition: border-color 0.3s; }
-        .value-card:hover { border-color: rgba(100, 255, 218, 0.3); }
-        .value-icon { font-size: 2.5em; margin-bottom: 15px; display: block; }
-
         /* CYCLE DE DON */
         .process-steps { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; text-align: center; margin-top: 40px; background: #0d1f3a; padding: 30px; border-radius: 15px; }
         .step { flex: 1; min-width: 200px; }
         .step-number { font-size: 2.5em; font-weight: bold; color: #64ffda; display: block; opacity: 0.5; }
-
-        /* KIT MÉDIA (AJOUT B2B) */
-        .media-kit { background: rgba(100, 255, 218, 0.05); padding: 30px; border-radius: 10px; text-align: center; margin-top: 60px; border: 1px dashed #64ffda; }
-        .btn-download { display: inline-block; border: 1px solid #64ffda; color: #64ffda; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-top: 15px; transition: background 0.3s; }
-        .btn-download:hover { background: rgba(100, 255, 218, 0.1); }
 
         /* FORMULAIRE */
         .form-box { background: #112240; padding: 40px; border-radius: 10px; border: 1px solid #64ffda; margin-top: 60px; }
@@ -56,6 +50,7 @@
         <nav>
             <a href="apropos.html">À Propos</a>
             <a href="causes.html">Causes</a>
+            <a href="index.html#comment-ca-marche">Comment ça marche</a>
             <a href="vote.html">Vote</a>
             <a href="partenaires.html" style="color:#64ffda;">Espace Organismes</a>
             <a href="connexion.html" class="btn-connexion">Connexion</a>
@@ -64,7 +59,26 @@
 
     <div class="container">
         <h1>Devenir partenaire bénéficiaire</h1>
-        <p style="text-align:center; color:#8892b0; margin-bottom:50px;">Forfeo s'engage à reverser <b>1 % de ses bénéfices nets</b> aux organismes du Québec. Inscrivez-vous pour en bénéficier.</p>
+        <p style="text-align:center; color:#8892b0; margin-bottom:30px;">Forfeo s'engage à reverser <b>1 % de ses bénéfices nets</b> aux organismes du Québec.</p>
+
+        <div class="stats-context">
+            <h3 style="color:#e6f1ff; text-align:center; margin-top:0;">Pourquoi Forfeo s'engage ?</h3>
+            <p style="text-align:center;">Les besoins au Québec sont grandissants. Nous croyons que le secteur privé doit être un moteur de changement social.</p>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">1/10</span>
+                    <span class="stat-desc">Québécois a recours à l'aide alimentaire.</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">28 000+</span>
+                    <span class="stat-desc">Animaux abandonnés chaque année au QC.</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-desc">Des dons Forfeo restent dans la province.</span>
+                </div>
+            </div>
+        </div>
 
         <h2>Qui soutenons-nous ?</h2>
         <div class="eligibility-box">
@@ -74,63 +88,24 @@
                 <div class="check-item"><span class="check-icon">✓</span> Impact local direct (pas d'intermédiaires)</div>
             </div>
             <div style="flex:1; color:#8892b0;">
-                Nous sélectionnons des organismes sérieux dans les secteurs de l'alimentation, de la santé, de l'éducation et de l'environnement.
+                Nous sélectionnons des organismes sérieux. Forfeo finance à même ses profits corporatifs pour créer un levier financier durable pour le milieu communautaire.
             </div>
         </div>
 
-        <h2>Le Cycle de Don (Expliqué)</h2>
+        <h2>Le Cycle de Don</h2>
         <div class="process-steps">
-            <div class="step">
-                <span class="step-number">01</span>
-                <h4>Achat Local</h4>
-                <p style="font-size:0.8em; color:#a8b2d1;">Sur Forfeo.com</p>
-            </div>
-            <div class="step">
-                <span class="step-number">02</span>
-                <h4>Cagnotte 1%</h4>
-                <p style="font-size:0.8em; color:#a8b2d1;">Forfeo verse 1% de ses profits</p>
-            </div>
-            <div class="step">
-                <span class="step-number">03</span>
-                <h4>Vote Citoyen</h4>
-                <p style="font-size:0.8em; color:#a8b2d1;">La communauté choisit</p>
-            </div>
-            <div class="step">
-                <span class="step-number">04</span>
-                <h4>Versement</h4>
-                <p style="font-size:0.8em; color:#a8b2d1;">Don à l'organisme</p>
-            </div>
-        </div>
-
-        <h2>Pourquoi s'inscrire ?</h2>
-        <div class="value-grid">
-            <div class="value-card">
-                <span class="value-icon">📢</span>
-                <h3>Visibilité Gratuite</h3>
-                <p style="font-size:0.9em; color:#8892b0;">Votre logo exposé à des milliers de visiteurs.</p>
-            </div>
-            <div class="value-card">
-                <span class="value-icon">💸</span>
-                <h3>Financement Libre</h3>
-                <p style="font-size:0.9em; color:#8892b0;">Forfeo donne 1% de ses bénéfices. Ce sont des fonds non affectés pour vos besoins réels.</p>
-            </div>
-        </div>
-
-        <div class="media-kit">
-            <h3 style="color:#e6f1ff; margin:0;">📁 Kit Média Partenaires</h3>
-            <p style="font-size:0.9em; margin:10px 0;">Vous voulez parler de Forfeo à votre communauté ? Téléchargez nos logos et bannières.</p>
-            <a href="#" class="btn-download" onclick="alert('Bientôt disponible !')">📥 Télécharger les visuels</a>
+            <div class="step"><span class="step-number">01</span><h4>Achat Local</h4><p style="font-size:0.8em; color:#a8b2d1;">Sur Forfeo.com</p></div>
+            <div class="step"><span class="step-number">02</span><h4>Cagnotte 1%</h4><p style="font-size:0.8em; color:#a8b2d1;">Des profits Forfeo</p></div>
+            <div class="step"><span class="step-number">03</span><h4>Vote Citoyen</h4><p style="font-size:0.8em; color:#a8b2d1;">La communauté choisit</p></div>
+            <div class="step"><span class="step-number">04</span><h4>Versement</h4><p style="font-size:0.8em; color:#a8b2d1;">Don à l'organisme</p></div>
         </div>
 
         <div class="form-box">
             <h2 style="color:#e6f1ff; margin-top:0; border:none; padding:0;">Manifestation d'intérêt</h2>
             <form action="https://api.web3forms.com/submit" method="POST">
                 <input type="hidden" name="access_key" value="c7c665be-ec7f-4455-9a5e-11ebb323fff9">
-                <input type="hidden" name="redirect" value="https://forfeo2005.github.io/FORFEO-DON-COMUNAUTAIRE/merci-contact.html">
-                
                 <label>Nom de l'organisme</label>
-                <input type="text" name="org_name" required placeholder="Ex: Moisson Québec">
-                
+                <input type="text" name="org_name" required placeholder="Ex: Banque Alimentaire Locale">
                 <label>Secteur</label>
                 <select name="sector">
                     <option>Pauvreté / Alimentation</option>
@@ -139,22 +114,14 @@
                     <option>Environnement</option>
                     <option>Animaux</option>
                 </select>
-
                 <label>Courriel responsable</label>
                 <input type="email" name="email" required>
-
                 <label>Message</label>
                 <textarea name="message" rows="4"></textarea>
-
-                <div style="font-size:0.8em; color:#8892b0; margin-bottom:20px; border-left:2px solid #64ffda; padding-left:10px;">
-                    🛡️ <b>Éthique :</b> Vos données ne seront jamais vendues.
-                </div>
-
                 <button type="submit" class="btn-submit">Envoyer</button>
             </form>
         </div>
     </div>
-
     <script src="forfy.js"></script>
 </body>
 </html>
