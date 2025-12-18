@@ -7,40 +7,39 @@
     <style>
         html { scroll-behavior: smooth; }
         body { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background-color: #0a192f; color: #ccd6f6; line-height: 1.6; }
+        
         header { display: flex; justify-content: space-between; align-items: center; padding: 15px 50px; background-color: rgba(10, 25, 47, 0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #1f2f4d; }
         .logo-img { height: 50px; }
         nav { display: flex; gap: 20px; align-items: center; }
         nav a { color: #a8b2d1; text-decoration: none; }
         nav a:hover { color: #64ffda; }
         .btn-connexion { border: 1px solid #64ffda; color: #64ffda !important; padding: 8px 20px; border-radius: 4px; }
+
         .container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; }
         h1 { color: #e6f1ff; text-align: center; font-size: 2.5em; }
         h2 { color: #e6f1ff; border-left: 4px solid #64ffda; padding-left: 15px; margin-top: 60px; margin-bottom: 30px; }
-        
-        /* BOX STATISTIQUES (AJOUTÉ) */
-        .stats-context { background: rgba(100, 255, 218, 0.05); padding: 30px; border-radius: 10px; margin-bottom: 50px; border: 1px solid #233554; }
-        .stats-grid { display: flex; gap: 30px; margin-top: 20px; flex-wrap: wrap; }
-        .stat-item { flex: 1; min-width: 200px; text-align: center; }
-        .stat-number { font-size: 2.5em; font-weight: bold; color: #64ffda; display: block; }
-        .stat-desc { font-size: 0.9em; color: #a8b2d1; }
 
-        /* ÉLIGIBILITÉ */
-        .eligibility-box { background-color: #112240; border: 1px solid #233554; border-radius: 10px; padding: 40px; display: flex; flex-wrap: wrap; gap: 40px; align-items: center; }
-        .check-item { display: flex; align-items: center; margin-bottom: 15px; color: #a8b2d1; }
-        .check-icon { color: #64ffda; font-weight: bold; margin-right: 15px; font-size: 1.2em; }
+        /* TEXTE RASSURANT */
+        .reassurance-box { background: rgba(100, 255, 218, 0.05); padding: 30px; border-radius: 10px; border: 1px solid #64ffda; text-align: center; margin-bottom: 40px; }
+        .reassurance-box p { font-size: 1.1em; color: #e6f1ff; }
 
-        /* CYCLE DE DON */
-        .process-steps { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; text-align: center; margin-top: 40px; background: #0d1f3a; padding: 30px; border-radius: 15px; }
-        .step { flex: 1; min-width: 200px; }
-        .step-number { font-size: 2.5em; font-weight: bold; color: #64ffda; display: block; opacity: 0.5; }
+        /* FAQ CLIGNOTANTE */
+        @keyframes flashBorder { 0% { border-color: #64ffda; } 50% { border-color: #fff; box-shadow: 0 0 15px rgba(100,255,218,0.5); } 100% { border-color: #64ffda; } }
+        .flash-faq { border: 2px solid #64ffda; animation: flashBorder 2s infinite; margin-top: 40px; background: #112240; border-radius: 10px; overflow: hidden; }
+        .flash-faq summary { padding: 15px; cursor: pointer; color: #64ffda; font-weight: bold; }
+        .flash-faq div { padding: 15px; border-top: 1px solid #233554; }
 
-        /* FORMULAIRE */
         .form-box { background: #112240; padding: 40px; border-radius: 10px; border: 1px solid #64ffda; margin-top: 60px; }
         input, select, textarea { width: 100%; padding: 12px; margin-bottom: 20px; background: #0a192f; border: 1px solid #233554; color: #fff; border-radius: 5px; }
         label { display: block; color: #64ffda; margin-bottom: 5px; font-weight: bold; }
         .btn-submit { width: 100%; padding: 15px; background: #64ffda; color: #0a192f; border: none; font-weight: bold; cursor: pointer; border-radius: 5px; }
 
-        @media (max-width: 768px) { header { flex-direction: column; } nav { flex-wrap: wrap; justify-content: center; } .eligibility-box { flex-direction: column; } }
+        footer { text-align: center; padding: 40px; border-top: 1px solid #1f2f4d; color: #8892b0; background-color: #0a192f; }
+        .social-links { margin-bottom: 20px; display: flex; justify-content: center; gap: 20px; }
+        .social-link svg { width: 24px; height: 24px; fill: #64ffda; transition: transform 0.3s; }
+        .social-link:hover svg { transform: translateY(-5px); fill: #fff; }
+
+        @media (max-width: 768px) { header { flex-direction: column; } nav { flex-wrap: wrap; justify-content: center; } }
     </style>
 </head>
 <body>
@@ -53,57 +52,32 @@
             <a href="index.html#comment-ca-marche">Comment ça marche</a>
             <a href="vote.html">Vote</a>
             <a href="partenaires.html" style="color:#64ffda;">Espace Organismes</a>
+            <a href="videos.html">Vidéos</a>
             <a href="connexion.html" class="btn-connexion">Connexion</a>
         </nav>
     </header>
 
     <div class="container">
         <h1>Devenir partenaire bénéficiaire</h1>
-        <p style="text-align:center; color:#8892b0; margin-bottom:30px;">Forfeo s'engage à reverser <b>1 % de ses bénéfices nets</b> aux organismes du Québec.</p>
-
-        <div class="stats-context">
-            <h3 style="color:#e6f1ff; text-align:center; margin-top:0;">Pourquoi Forfeo s'engage ?</h3>
-            <p style="text-align:center;">Les besoins au Québec sont grandissants. Nous croyons que le secteur privé doit être un moteur de changement social.</p>
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <span class="stat-number">1/10</span>
-                    <span class="stat-desc">Québécois a recours à l'aide alimentaire.</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">28 000+</span>
-                    <span class="stat-desc">Animaux abandonnés chaque année au QC.</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">100%</span>
-                    <span class="stat-desc">Des dons Forfeo restent dans la province.</span>
-                </div>
-            </div>
+        
+        <div class="reassurance-box">
+            <p>Rejoindre Forfeo, c'est simple et sans risque. Pas de paperasse administrative complexe. Une fois inscrit, vous profitez non seulement du vote du mois, mais aussi d'une vitrine permanente auprès de notre communauté engagée. Nous mettons votre cause en lumière.</p>
         </div>
 
-        <h2>Qui soutenons-nous ?</h2>
-        <div class="eligibility-box">
-            <div style="flex:1;">
-                <div class="check-item"><span class="check-icon">✓</span> OBNL enregistré au Québec (NEQ valide)</div>
-                <div class="check-item"><span class="check-icon">✓</span> Mission sociale, environnementale ou animale</div>
-                <div class="check-item"><span class="check-icon">✓</span> Impact local direct (pas d'intermédiaires)</div>
+        <details class="flash-faq">
+            <summary>❓ Questions fréquentes (Cliquer pour ouvrir)</summary>
+            <div>
+                <p><b>Comment envoyer nos vidéos ?</b><br>Utilisez la section "Vidéos" du site. Nous acceptons les liens WeTransfer ou YouTube.</p>
+                <p><b>Est-ce payant ?</b><br>Non, l'inscription est 100% gratuite pour les OBNL.</p>
             </div>
-            <div style="flex:1; color:#8892b0;">
-                Nous sélectionnons des organismes sérieux. Forfeo finance à même ses profits corporatifs pour créer un levier financier durable pour le milieu communautaire.
-            </div>
-        </div>
-
-        <h2>Le Cycle de Don</h2>
-        <div class="process-steps">
-            <div class="step"><span class="step-number">01</span><h4>Achat Local</h4><p style="font-size:0.8em; color:#a8b2d1;">Sur Forfeo.com</p></div>
-            <div class="step"><span class="step-number">02</span><h4>Cagnotte 1%</h4><p style="font-size:0.8em; color:#a8b2d1;">Des profits Forfeo</p></div>
-            <div class="step"><span class="step-number">03</span><h4>Vote Citoyen</h4><p style="font-size:0.8em; color:#a8b2d1;">La communauté choisit</p></div>
-            <div class="step"><span class="step-number">04</span><h4>Versement</h4><p style="font-size:0.8em; color:#a8b2d1;">Don à l'organisme</p></div>
-        </div>
+        </details>
 
         <div class="form-box">
             <h2 style="color:#e6f1ff; margin-top:0; border:none; padding:0;">Manifestation d'intérêt</h2>
             <form action="https://api.web3forms.com/submit" method="POST">
                 <input type="hidden" name="access_key" value="c7c665be-ec7f-4455-9a5e-11ebb323fff9">
+                <input type="hidden" name="redirect" value="https://forfeo2005.github.io/FORFEO-DON-COMUNAUTAIRE/merci-contact.html">
+                
                 <label>Nom de l'organisme</label>
                 <input type="text" name="org_name" required placeholder="Ex: Banque Alimentaire Locale">
                 <label>Secteur</label>
@@ -122,6 +96,15 @@
             </form>
         </div>
     </div>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/forfeo-inc-468326385" target="_blank" class="social-link"><svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+            <a href="https://www.facebook.com/share/1Ck2JnHSmf/?mibextid=wwXIfr" target="_blank" class="social-link"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+            <a href="https://www.tiktok.com/@forfeoinc?_r=1&_t=ZS-92Ir0D5AcNA" target="_blank" class="social-link"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93v6.16c0 2.52-1.12 4.88-2.91 6.52-1.78 1.63-4.15 2.5-6.55 2.35-4.51-.27-8.07-4.04-8.03-8.59.04-4.54 3.73-8.24 8.28-8.24.26 0 .52.01.78.04v4.21c-.27-.02-.54-.03-.81-.03-2.18 0-3.95 1.77-3.95 3.95s1.77 3.95 3.95 3.95c2.18 0 3.95-1.77 3.95-3.95V.02z"/></svg></a>
+        </div>
+        <p>&copy; 2025 Forfeo. <a href="confidentialite.html" style="color: #64ffda;">Confidentialité</a></p>
+    </footer>
     <script src="forfy.js"></script>
 </body>
 </html>
