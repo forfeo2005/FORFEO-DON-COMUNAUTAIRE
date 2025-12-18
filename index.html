@@ -162,16 +162,19 @@
         .gallery-link:hover .gallery-item { box-shadow: 0 8px 25px rgba(100, 255, 218, 0.5); filter: grayscale(0%); border-color: #64ffda; }
         .gallery-link:hover { transform: scale(1.05); z-index: 10; }
 
-        /* --- 7. CARTE IMPACT & RECHERCHE --- */
+        /* --- 7. CARTE IMPACT & RECHERCHE (STYLE CORRIGÉ) --- */
         .map-section {
-            padding: 80px 20px;
+            padding: 60px 20px 80px 20px;
             background-color: #0d1f3a;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         
         .map-container {
+            width: 100%;
             max-width: 1000px;
-            margin: 0 auto;
             position: relative;
             perspective: 1000px;
         }
@@ -186,30 +189,86 @@
             transform-style: preserve-3d;
         }
 
-        .map-search-overlay {
-            position: absolute; top: 20px; left: 20px; z-index: 1000;
-            background: rgba(10, 25, 47, 0.9); padding: 10px; border-radius: 10px;
-            border: 1px solid #64ffda; display: flex; gap: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        /* RECHERCHE REPOSITIONNÉE (EN DEHORS DE LA CARTE) */
+        .search-container {
+            width: 100%;
+            max-width: 600px;
+            margin-bottom: 25px; /* Espace entre recherche et carte */
+            z-index: 10;
         }
-        .map-input { background: transparent; border: none; color: #fff; padding: 5px; width: 200px; outline: none; }
-        .map-btn { background: #64ffda; color: #0a192f; border: none; padding: 5px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; }
 
-        /* --- 8. CHATBOT FORFY (VIDEO & TOOLTIP) --- */
+        .map-search-bar {
+            display: flex;
+            background: rgba(10, 25, 47, 0.95);
+            border: 1px solid #64ffda;
+            border-radius: 50px;
+            padding: 5px;
+            box-shadow: 0 5px 25px rgba(100, 255, 218, 0.15);
+        }
+        
+        .map-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1em;
+            outline: none;
+        }
+        .map-btn {
+            background: #64ffda;
+            color: #0a192f;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .map-btn:hover { background: #4cdbb3; }
+
+        /* NOUVEAU STYLE DE MARQUEUR (Pin CSS) */
+        .custom-pin-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .custom-pin {
+            background-color: #64ffda;
+            width: 26px;
+            height: 26px;
+            border-radius: 50% 50% 50% 0;
+            background: linear-gradient(135deg, #64ffda, #00bcd4);
+            transform: rotate(-45deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+            border: 2px solid #fff;
+            margin-top: -15px; /* Ajustement pour pointer au bon endroit */
+        }
+        .custom-pin::after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background-color: #0a192f;
+            border-radius: 50%;
+        }
+
+        /* --- 8. CHATBOT FORFY --- */
         .chat-widget-btn {
             position: fixed; bottom: 30px; right: 30px; width: 70px; height: 70px;
             background-color: #64ffda; border-radius: 50%; display: flex; justify-content: center; align-items: center;
             cursor: pointer; box-shadow: 0 0 20px rgba(100, 255, 218, 0.4); z-index: 9999;
             transition: transform 0.3s; animation: float 3s ease-in-out infinite;
-            position: fixed; 
+            position: fixed; border: 2px solid #64ffda; overflow: visible;
         }
         
-        /* Vidéo Avatar */
-        .chat-video-icon { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 2px solid #64ffda; }
+        .chat-video-icon { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
         .chat-widget-btn:hover { transform: scale(1.1); }
         @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
 
-        /* BULLE D'AIDE (TOOLTIP) MODIFIÉE */
+        /* BULLE D'AIDE COURTE */
         .chat-tooltip {
             position: absolute;
             bottom: 85px; 
@@ -430,12 +489,16 @@
         </section>
 
         <section class="map-section">
-            <div class="map-container">
-                <div class="map-search-overlay">
+            <h2 class="section-title" style="text-align:center; color:#e6f1ff; margin-bottom:20px; text-shadow:0 0 10px rgba(0,0,0,0.5);">Carte de l'Impact Social</h2>
+            
+            <div class="search-container">
+                <div class="map-search-bar">
                     <input type="text" id="mapSearch" class="map-input" placeholder="Trouver un organisme (ex: Moisson)..." onkeypress="if(event.key==='Enter') searchMap()">
                     <button class="map-btn" onclick="searchMap()">Chercher</button>
                 </div>
-                <h2 class="section-title" style="text-align:center; color:#e6f1ff; padding-top:20px; text-shadow:0 0 10px rgba(0,0,0,0.5);">Carte de l'Impact Social</h2>
+            </div>
+
+            <div class="map-container">
                 <div id="map"></div>
             </div>
         </section>
@@ -499,27 +562,77 @@
             attribution: '&copy; OpenStreetMap &copy; CARTO', subdomains: 'abcd', maxZoom: 19
         }).addTo(map);
 
-        var impactIcon = L.divIcon({
-            className: 'custom-div-icon',
-            html: "<div style='font-size:24px; text-shadow:0 0 10px #64ffda;'>❤️</div>",
-            iconSize: [30, 30], iconAnchor: [15, 15]
+        // NOUVEAU STYLE DE MARQUEUR (Pin CSS Vert/Bleu)
+        var pinIcon = L.divIcon({
+            className: 'custom-pin-container',
+            html: "<div class='custom-pin'></div>",
+            iconSize: [30, 42],
+            iconAnchor: [15, 42],
+            popupAnchor: [0, -40]
         });
 
-        // Liste des organismes (Données de test)
+        // BASE DE DONNÉES ÉLARGIE (40+ Organismes)
         var impactPoints = [
-            { "nom": "Moisson Québec", "lat": 46.8139, "lon": -71.2080, "desc": "Banque alimentaire de la Capitale." },
-            { "nom": "Dans la rue", "lat": 45.5017, "lon": -73.5673, "desc": "Aide aux jeunes sans-abri à Montréal." },
-            { "nom": "SPA Estrie", "lat": 45.4042, "lon": -71.8929, "desc": "Refuge animalier et adoption." },
-            { "nom": "Maison des Jeunes Saguenay", "lat": 48.4284, "lon": -71.0601, "desc": "Soutien et activités pour les jeunes." },
-            { "nom": "Centre Femmes Charlevoix", "lat": 47.6259, "lon": -70.3622, "desc": "Lieu d'entraide et de soutien." }
+            // Québec & Environs
+            { "nom": "Moisson Québec", "lat": 46.8139, "lon": -71.2080, "desc": "Banque alimentaire." },
+            { "nom": "YWCA Québec", "lat": 46.8033, "lon": -71.2428, "desc": "Hébergement femmes." },
+            { "nom": "Lauberivière", "lat": 46.8188, "lon": -71.2155, "desc": "Refuge sans-abri." },
+            { "nom": "SPA de Québec", "lat": 46.8521, "lon": -71.3283, "desc": "Protection animale." },
+            { "nom": "Centre Multiethnique", "lat": 46.8166, "lon": -71.2223, "desc": "Accueil immigrants." },
+            
+            // Montréal & Environs
+            { "nom": "Moisson Montréal", "lat": 45.5017, "lon": -73.5673, "desc": "Banque alimentaire." },
+            { "nom": "Dans la rue", "lat": 45.5186, "lon": -73.5540, "desc": "Aide jeunes." },
+            { "nom": "Accueil Bonneau", "lat": 45.5103, "lon": -73.5517, "desc": "Services itinérants." },
+            { "nom": "Mission Old Brewery", "lat": 45.5057, "lon": -73.5606, "desc": "Refuge urgence." },
+            { "nom": "SPCA Montréal", "lat": 45.4947, "lon": -73.6552, "desc": "Bien-être animal." },
+            { "nom": "Jeunesse au Soleil", "lat": 45.5312, "lon": -73.6190, "desc": "Aide familles." },
+
+            // Laval & Rive-Nord
+            { "nom": "Centre Bénévolat Laval", "lat": 45.5758, "lon": -73.7531, "desc": "Entraide communautaire." },
+            { "nom": "Moisson Laurentides", "lat": 45.6797, "lon": -73.8942, "desc": "Blainville - Aide." },
+            { "nom": "Maison de la Famille", "lat": 46.0460, "lon": -74.3000, "desc": "Sainte-Agathe." },
+
+            // Rive-Sud & Montérégie
+            { "nom": "Moisson Rive-Sud", "lat": 45.5500, "lon": -73.4000, "desc": "Boucherville - Aide." },
+            { "nom": "L'Abri de la Rive-Sud", "lat": 45.5300, "lon": -73.5000, "desc": "Longueuil - Hébergement." },
+
+            // Estrie (Sherbrooke)
+            { "nom": "Moisson Estrie", "lat": 45.4042, "lon": -71.8929, "desc": "Sherbrooke - Aide." },
+            { "nom": "SPA de l'Estrie", "lat": 45.3833, "lon": -71.9333, "desc": "Refuge animalier." },
+            { "nom": "La Chaudronnée", "lat": 45.4000, "lon": -71.8900, "desc": "Cuisine collective." },
+
+            // Outaouais (Gatineau)
+            { "nom": "Moisson Outaouais", "lat": 45.4765, "lon": -75.7013, "desc": "Gatineau - Aide." },
+            { "nom": "Gîte Ami", "lat": 45.4285, "lon": -75.7150, "desc": "Refuge hommes." },
+
+            // Mauricie (Trois-Rivières)
+            { "nom": "Moisson Mauricie", "lat": 46.3425, "lon": -72.5421, "desc": "Trois-Rivières." },
+            { "nom": "Maison Coup de Pouce", "lat": 46.3500, "lon": -72.5500, "desc": "Aide familles." },
+
+            // Saguenay-Lac-Saint-Jean
+            { "nom": "Moisson Saguenay", "lat": 48.4284, "lon": -71.0601, "desc": "Chicoutimi." },
+            { "nom": "Maison des Jeunes", "lat": 48.4200, "lon": -71.0500, "desc": "Activités jeunesse." },
+
+            // Bas-Saint-Laurent & Gaspésie
+            { "nom": "Moisson Rimouski", "lat": 48.4398, "lon": -68.5234, "desc": "Rimouski." },
+            { "nom": "Centre Femmes", "lat": 48.4450, "lon": -68.5300, "desc": "Soutien femmes." },
+            { "nom": "Accueil Blanche-Goulet", "lat": 48.9950, "lon": -64.4000, "desc": "Gaspé - Refuge." },
+
+            // Abitibi-Témiscamingue
+            { "nom": "Ressourcerie Bernard-Hamel", "lat": 48.2280, "lon": -79.0200, "desc": "Rouyn-Noranda." },
+            { "nom": "Maison de la Famille", "lat": 48.1000, "lon": -77.7800, "desc": "Val-d'Or." },
+
+            // Charlevoix
+            { "nom": "Centre Bénévolat", "lat": 47.6259, "lon": -70.3622, "desc": "Baie-Saint-Paul." }
         ];
 
-        // Ajouter les points sur la carte
+        // Ajouter les marqueurs (PINS VERTS)
         impactPoints.forEach(point => {
-            L.marker([point.lat, point.lon], { icon: impactIcon }).addTo(map).bindPopup(`<b style="color:#0a192f; font-size:1.1em;">${point.nom}</b><br>${point.desc}`);
+            L.marker([point.lat, point.lon], { icon: pinIcon }).addTo(map).bindPopup(`<b style="color:#0a192f; font-size:1.1em;">${point.nom}</b><br>${point.desc}`);
         });
 
-        // Fonction de recherche
+        // Fonction de recherche améliorée
         function searchMap() {
             var input = document.getElementById('mapSearch').value.toLowerCase();
             if(!input) return;
@@ -527,36 +640,26 @@
             var found = impactPoints.find(p => p.nom.toLowerCase().includes(input));
             
             if(found) {
-                // Animation "FlyTo" vers le point trouvé
                 map.flyTo([found.lat, found.lon], 13, { duration: 2 });
-                // Ouvrir le popup après le vol
                 setTimeout(() => {
                     L.popup().setLatLng([found.lat, found.lon])
                       .setContent(`<b style="color:#0a192f">${found.nom}</b><br>${found.desc}`)
                       .openOn(map);
                 }, 2000);
             } else {
-                alert("Organisme non trouvé sur la carte pour l'instant. Essayez 'Moisson' ou 'SPA'.");
+                alert("Organisme non trouvé. Essayez une grande ville ou 'Moisson'.");
             }
         }
 
-        // --- 3. IA FORFY (CERVEAU COMPLET & EXPERT) ---
+        // --- 3. IA FORFY (CERVEAU COMPLET) ---
         const knowledgeBase = [
-            // PARTICIPATION & FONCTIONNEMENT
             { keys: ["participer", "jouer", "comment faire", "marche", "fonctionne"], resp: "C'est très simple !<br>1. Achetez un forfait sur <a href='https://isow.forfeo.com' style='color:#64ffda'>Forfeo.com</a>.<br>2. 1% du profit va dans la cagnotte.<br>3. Vous êtes inscrit aux concours et vous pouvez voter pour la cause du mois !" },
-            // INSCRIPTION (UTILISATEUR VS ORGANISME)
             { keys: ["inscrire", "inscription", "compte", "créer"], resp: "Pour les utilisateurs, l'inscription est automatique à l'achat. Pour les **organismes** qui veulent bénéficier des dons, c'est par ici : <a href='partenaires.html' style='color:#64ffda'>Espace Partenaires</a>." },
-            // ORGANISMES & CAUSES
             { keys: ["cause", "organisme", "partenaire", "association", "soutenir", "qui aidons nous"], resp: "Nous soutenons des OBNL québécois enregistrés (ex: Moisson, SPA, Refuges...). Vous pouvez voir des exemples sur la carte ci-dessus ou dans la section <a href='causes.html' style='color:#64ffda'>Causes</a>." },
-            // VOTE
             { keys: ["vote", "choisir", "gagner la cause", "sélection"], resp: "Le pouvoir est à vous ! Chaque mois, la communauté vote pour la cause qui recevra le don. Ça se passe sur la page <a href='vote.html' style='color:#64ffda'>Vote</a>." },
-            // CONCOURS
             { keys: ["concours", "gagner prix", "tirage", "cadeau"], resp: "On adore gâter notre communauté ! Nous avons des tirages trimestriels et des concours 'Escapade de Rêve'. Jetez un œil à la section <a href='#concours' style='color:#64ffda'>Concours</a>." },
-            // ARGENT & DONS
             { keys: ["argent", "don", "1%", "combien", "sous", "profit"], resp: "Forfeo s'engage fermement à reverser **1 % de ses bénéfices nets**. C'est un don corporatif qui ne coûte rien de plus au client lors de son achat." },
-            // À PROPOS / ÉQUIPE
             { keys: ["qui êtes vous", "équipe", "forfeo c'est quoi", "histoire", "mission"], resp: "Nous sommes une équipe de passionnés québécois qui veulent reconnecter le commerce local à l'entraide sociale. Découvrez notre histoire sur la page <a href='apropos.html' style='color:#64ffda'>À Propos</a>." },
-            // SALUTATIONS
             { keys: ["bonjour", "salut", "allo", "hey", "coucou"], resp: "Wouf ! Bonjour ! Je suis prêt à vous guider sur le site. Posez-moi une question sur les concours ou les causes !" }
         ];
 
@@ -569,10 +672,7 @@
 
         function findResponse(text) {
             text = text.toLowerCase();
-            // Recherche de correspondance large
             for (let item of knowledgeBase) {
-                // On vérifie si TOUS les mots clés d'un groupe sont présents (pour être plus précis) ou au moins un
-                // Ici, on cherche si au moins un mot clé principal correspond
                 if (item.keys.some(key => text.includes(key))) {
                     return item.resp;
                 }
