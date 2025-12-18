@@ -5,25 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Les Causes Soutenues - Forfeo</title>
     <style>
-        /* --- CONFIGURATION GÉNÉRALE --- */
         html { scroll-behavior: smooth; }
-        * { box-sizing: border-box; }
         body { margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0a192f; color: #ccd6f6; line-height: 1.6; }
-
-        /* HEADER */
         header { display: flex; justify-content: space-between; align-items: center; padding: 15px 50px; background-color: rgba(10, 25, 47, 0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #1f2f4d; }
         .logo-img { height: 50px; }
         nav { display: flex; gap: 20px; align-items: center; }
         nav a { color: #a8b2d1; text-decoration: none; transition: color 0.3s; }
         nav a:hover { color: #64ffda; }
         .btn-connexion { border: 1px solid #64ffda; color: #64ffda !important; padding: 8px 20px; border-radius: 4px; }
-
-        /* HERO CAUSES */
         .hero { text-align: center; padding: 80px 20px; border-bottom: 1px solid #1f2f4d; }
         h1 { color: #e6f1ff; font-size: 2.5em; margin-bottom: 20px; }
-        .subtitle { max-width: 700px; margin: 0 auto; color: #8892b0; }
-
-        /* GRILLE DES CAUSES */
         .causes-grid { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
         .cause-card { background-color: #112240; border-radius: 10px; overflow: hidden; width: 300px; transition: transform 0.3s; border: 1px solid transparent; }
         .cause-card:hover { transform: translateY(-5px); border-color: #64ffda; }
@@ -34,10 +25,7 @@
         .cause-desc { font-size: 0.9em; color: #8892b0; margin-bottom: 20px; }
         .btn-soutenir { display: block; text-align: center; background: transparent; border: 1px solid #64ffda; color: #64ffda; padding: 10px; border-radius: 5px; text-decoration: none; font-weight: bold; transition: background 0.3s; }
         .btn-soutenir:hover { background: rgba(100, 255, 218, 0.1); }
-
-        /* FOOTER */
         footer { text-align: center; padding: 40px; border-top: 1px solid #1f2f4d; color: #8892b0; background-color: #0a192f; }
-
         @media (max-width: 768px) { header { flex-direction: column; gap: 15px; padding: 15px; } nav { flex-wrap: wrap; justify-content: center; } }
     </style>
 </head>
@@ -48,10 +36,9 @@
         <nav>
             <a href="apropos.html">À Propos</a>
             <a href="causes.html" style="color:#64ffda;">Causes</a>
-            <a href="index.html#concours">Concours</a>
-            <a href="faq.html">Aide</a>
+            <a href="index.html#comment-ca-marche">Comment ça marche</a>
+            <a href="vote.html">Vote</a>
             <a href="partenaires.html">Espace Organismes</a>
-            <a href="inscription.html">Participer</a>
             <a href="connexion.html" class="btn-connexion">Connexion</a>
         </nav>
     </header>
@@ -59,22 +46,21 @@
     <main>
         <section class="hero">
             <h1>Des causes qui nous tiennent à cœur</h1>
-            <p class="subtitle">Chaque mois, nous mettons en lumière des enjeux cruciaux pour le Québec. Voici les secteurs que votre achat local aide à soutenir.</p>
+            <p style="color:#8892b0; max-width:700px; margin:0 auto;">Chaque mois, nous mettons en lumière des enjeux cruciaux pour le Québec. Voici les secteurs que votre achat local aide à soutenir.</p>
         </section>
 
         <div class="causes-grid">
             <div class="cause-card">
-                <img src="https://placehold.co/300x180/112240/64ffda?text=Alimentaire" alt="Aide Alimentaire" class="cause-img">
+                <img src="https://placehold.co/300x180/112240/64ffda?text=Alimentaire" class="cause-img">
                 <div class="cause-content">
                     <span class="cause-tag">Essentiel</span>
                     <h3>Sécurité Alimentaire</h3>
-                    <p class="cause-desc">Soutien aux banques alimentaires (Moisson) pour que personne ne dorme le ventre vide.</p>
+                    <p class="cause-desc">Soutien aux banques alimentaires locales pour que personne ne dorme le ventre vide.</p>
                     <a href="vote.html" class="btn-soutenir">Voter pour cette cause</a>
                 </div>
             </div>
-
             <div class="cause-card">
-                <img src="https://placehold.co/300x180/112240/64ffda?text=Jeunesse" alt="Jeunesse" class="cause-img">
+                <img src="https://placehold.co/300x180/112240/64ffda?text=Jeunesse" class="cause-img">
                 <div class="cause-content">
                     <span class="cause-tag">Avenir</span>
                     <h3>Jeunesse & Éducation</h3>
@@ -82,29 +68,17 @@
                     <a href="vote.html" class="btn-soutenir">Voter pour cette cause</a>
                 </div>
             </div>
-
             <div class="cause-card">
-                <img src="https://placehold.co/300x180/112240/64ffda?text=Animaux" alt="Animaux" class="cause-img">
+                <img src="https://placehold.co/300x180/112240/64ffda?text=Animaux" class="cause-img">
                 <div class="cause-content">
                     <span class="cause-tag">Protection</span>
                     <h3>Bien-être Animal</h3>
-                    <p class="cause-desc">Soutien aux refuges (SPA/SPCA) pour soigner et reloger les animaux abandonnés.</p>
+                    <p class="cause-desc">Soutien aux refuges certifiés pour soigner et reloger les animaux abandonnés.</p>
                     <a href="vote.html" class="btn-soutenir">Voter pour cette cause</a>
                 </div>
             </div>
-
             <div class="cause-card">
-                <img src="https://placehold.co/300x180/112240/64ffda?text=Femmes" alt="Femmes" class="cause-img">
-                <div class="cause-content">
-                    <span class="cause-tag">Solidarité</span>
-                    <h3>Soutien aux Femmes</h3>
-                    <p class="cause-desc">Maisons d'hébergement et centres d'aide pour les femmes en difficulté.</p>
-                    <a href="vote.html" class="btn-soutenir">Voter pour cette cause</a>
-                </div>
-            </div>
-
-            <div class="cause-card">
-                <img src="https://placehold.co/300x180/112240/64ffda?text=Environnement" alt="Environnement" class="cause-img">
+                <img src="https://placehold.co/300x180/112240/64ffda?text=Environnement" class="cause-img">
                 <div class="cause-content">
                     <span class="cause-tag">Planète</span>
                     <h3>Environnement</h3>
@@ -115,10 +89,7 @@
         </div>
     </main>
 
-    <footer>
-        <p>&copy; 2025 Forfeo. Fait avec passion au Québec.<br><a href="confidentialite.html" style="color: #64ffda;">Politique de confidentialité</a></p>
-    </footer>
-
+    <footer><p>&copy; 2025 Forfeo. Fait avec passion au Québec.<br><a href="confidentialite.html" style="color: #64ffda;">Politique de confidentialité</a></p></footer>
     <script src="forfy.js"></script>
 </body>
 </html>
