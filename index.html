@@ -43,32 +43,40 @@
         h1 { font-size: 3.5em; font-weight: 800; margin-bottom: 20px; color: #e6f1ff; }
         .highlight { background: linear-gradient(to right, #64ffda, #00bcd4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .subtitle { font-size: 1.2em; color: #8892b0; max-width: 700px; margin: 0 auto 40px; }
-        .boutons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        .btn { padding: 15px 30px; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 1em; }
+        
+        .boutons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .btn { padding: 15px 25px; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 1em; display: inline-flex; align-items: center; justify-content: center; text-align: center; }
         .btn-principal { background-color: #64ffda; color: #0a192f; }
         .btn-secondaire { border: 2px solid #64ffda; color: #64ffda; }
+        .btn-shop { background: linear-gradient(135deg, #00bcd4, #64ffda); color: #0a192f; border: none; box-shadow: 0 0 15px rgba(100, 255, 218, 0.4); transition: transform 0.2s; }
+        .btn-shop:hover { transform: scale(1.05); }
+        
         @keyframes pulse-green { 0% { box-shadow: 0 0 0 0 rgba(100, 255, 218, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(100, 255, 218, 0); } 100% { box-shadow: 0 0 0 0 rgba(100, 255, 218, 0); } }
         .btn-vote-anime { background-color: #112240; color: #64ffda; border: 2px solid #64ffda; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; animation: pulse-green 2s infinite; }
 
-        /* MÉTRIQUES INVESTISSEURS (VISION 2026) */
+        /* MÉTRIQUES INVESTISSEURS */
         .metrics-banner { display: flex; justify-content: center; gap: 50px; padding: 30px 20px; background: rgba(100, 255, 218, 0.03); border-top: 1px solid #233554; border-bottom: 1px solid #233554; margin-bottom: 60px; flex-wrap: wrap; }
         .metric-box { text-align: center; }
         .metric-val { display: block; font-size: 2em; font-weight: bold; color: #e6f1ff; }
         .metric-label { font-size: 0.8em; color: #64ffda; text-transform: uppercase; letter-spacing: 1px; }
         .beta-badge { background: #233554; color: #a8b2d1; padding: 2px 8px; border-radius: 4px; font-size: 0.6em; vertical-align: top; margin-left: 5px; }
 
-        /* SECTION 1-2-3 (RESTAURÉE AVEC LIENS) */
+        /* SECTION 1-2-3 (CYCLE DE DON) */
         .steps-section { padding: 60px 20px; text-align: center; background-color: #0d1f3a; border-radius: 15px; margin: 40px 0; }
         .flex-container { display: flex; gap: 30px; justify-content: center; flex-wrap: wrap; max-width: 1100px; margin: 0 auto; }
-        .flex-item { flex: 1; min-width: 280px; background: #112240; padding: 30px; border-radius: 10px; border: 1px solid #233554; transition: transform 0.3s; position: relative; display: flex; flex-direction: column; justify-content: center; }
+        .flex-item { flex: 1; min-width: 280px; background: #112240; padding: 30px; border-radius: 10px; border: 1px solid #233554; transition: transform 0.3s; position: relative; display: flex; flex-direction: column; align-items: center; }
         .flex-item:hover { transform: translateY(-5px); border-color: #64ffda; }
         .step-icon { font-size: 3em; margin-bottom: 15px; display: block; }
-        .step-link { text-decoration: none; color: inherit; display: block; height: 100%; }
-        /* Animation flash pour le lien */
-        @keyframes flashPulse { 0% { color: #64ffda; } 50% { color: #fff; text-shadow: 0 0 10px #64ffda; } 100% { color: #64ffda; } }
-        .flash-link { animation: flashPulse 2s infinite; font-weight: bold; text-decoration: underline; }
+        
+        /* Bouton Spécial Étape 1 */
+        .btn-step-link {
+            background-color: transparent; border: 1px solid #64ffda; color: #64ffda; 
+            padding: 8px 20px; border-radius: 20px; text-decoration: none; font-weight: bold;
+            margin-top: 10px; display: inline-block; transition: all 0.3s;
+        }
+        .btn-step-link:hover { background-color: #64ffda; color: #0a192f; }
 
-        /* MISSION CONTROL */
+        /* MISSION CONTROL & NEWSLETTER */
         .launch-control { background: #112240; margin: 80px auto; max-width: 1000px; border-radius: 20px; padding: 50px 30px; border: 1px solid rgba(100, 255, 218, 0.1); position: relative; overflow: hidden; }
         .launch-header { text-align: center; position: relative; z-index: 2; margin-bottom: 30px; }
         .launch-header h3 { color: #e6f1ff; margin: 0; }
@@ -76,12 +84,20 @@
         .countdown-box { background: rgba(10, 25, 47, 0.8); border: 1px solid #64ffda; border-radius: 10px; width: 80px; height: 80px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
         .count-number { font-size: 1.8em; font-weight: bold; color: #e6f1ff; }
         .count-label { font-size: 0.7em; color: #64ffda; text-transform: uppercase; }
-        .timeline-wrapper { position: relative; z-index: 2; padding: 0 20px; }
+        
+        /* TIMELINE */
+        .timeline-wrapper { position: relative; z-index: 2; padding: 0 20px; margin-bottom: 40px; }
         .timeline-line { display: flex; justify-content: space-between; position: relative; }
         .timeline-bg { position: absolute; top: 15px; left: 0; right: 0; height: 4px; background: #233554; z-index: 0; }
         .timeline-step { flex: 1; text-align: center; position: relative; z-index: 1; }
         .step-dot { width: 30px; height: 30px; background: #0a192f; border: 3px solid #233554; border-radius: 50%; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; color: #8892b0; font-weight: bold; }
         .step-active .step-dot { border-color: #64ffda; color: #64ffda; }
+
+        /* NEWSLETTER FORM */
+        .launch-cta { text-align: center; position: relative; z-index: 2; background: rgba(100, 255, 218, 0.05); padding: 20px; border-radius: 10px; display: inline-block; width: 100%; max-width: 500px; margin: 0 auto; display: block; }
+        .newsletter-form { display: flex; gap: 10px; margin-top: 15px; justify-content: center; flex-wrap: wrap; }
+        .newsletter-input { flex: 1; padding: 10px; border-radius: 5px; border: 1px solid #64ffda; background: #0a192f; color: #fff; min-width: 200px; }
+        .newsletter-btn { background: #64ffda; color: #0a192f; border: none; padding: 10px 20px; border-radius: 5px; font-weight: bold; cursor: pointer; }
 
         /* CONCOURS */
         .concours-section { padding: 80px 20px; max-width: 1100px; margin: 0 auto; }
@@ -95,24 +111,26 @@
         .btn-carte { display: inline-block; border: 1px solid #64ffda; color: #64ffda; padding: 10px 20px; border-radius: 4px; text-decoration: none; }
         .btn-video { display: inline-block; background-color: #0a192f; color: #64ffda; border: 1px dashed #64ffda; padding: 10px 20px; border-radius: 4px; text-decoration: none; font-size: 0.9em; width: 100%; margin-top: 10px; }
 
-        /* GALERIE (RESTAURÉE) */
+        /* GALERIE */
         .gallery-section { padding: 60px 0; background: #0d1f3a; overflow: hidden; margin-top: 40px; }
         .gallery-intro { text-align: center; max-width: 800px; margin: 0 auto 30px; padding: 0 20px; }
         .marquee-wrapper { display: flex; flex-direction: column; gap: 20px; }
         .marquee { display: flex; overflow: hidden; }
-        .marquee-content { display: flex; gap: 20px; animation: scroll 40s linear infinite; }
-        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
-        .gallery-item { height: 180px; border-radius: 10px; border: 1px solid #233554; }
+        .marquee-content { display: flex; gap: 20px; animation: scroll 60s linear infinite; }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } } /* Scroll infini ajusté */
+        .gallery-item { height: 180px; border-radius: 10px; border: 1px solid #233554; transition: transform 0.3s; }
+        .gallery-link { transition: transform 0.3s; display: block; }
+        .gallery-link:hover { transform: scale(1.05); }
 
-        /* CARTE IMPACT */
+        /* CARTE & RECHERCHE (CORRIGÉE) */
         .map-section { padding: 40px 20px 80px; background-color: #0a192f; display: flex; flex-direction: column; align-items: center; }
-        /* Recherche fixée en dehors de la carte */
         .search-container { width: 100%; max-width: 600px; margin-bottom: 25px; z-index: 10; }
         .map-search-bar { display: flex; background: rgba(10, 25, 47, 0.95); border: 1px solid #64ffda; border-radius: 50px; padding: 5px; box-shadow: 0 5px 25px rgba(100, 255, 218, 0.15); }
         .map-input { flex: 1; background: transparent; border: none; color: #fff; padding: 10px 20px; font-size: 1em; outline: none; }
         .map-btn { background: #64ffda; color: #0a192f; border: none; padding: 10px 30px; border-radius: 50px; cursor: pointer; font-weight: bold; transition: background 0.3s; }
         .map-btn:hover { background: #4cdbb3; }
-        #map { height: 500px; width: 100%; max-width: 1000px; border-radius: 15px; border: 2px solid #64ffda; box-shadow: 0 20px 50px rgba(0,0,0,0.6); z-index: 1; }
+        /* CORRECTION HAUTEUR CARTE */
+        #map { height: 500px; width: 100%; max-width: 1000px; border-radius: 15px; border: 2px solid #64ffda; box-shadow: 0 20px 50px rgba(0,0,0,0.6); z-index: 1; display: block; }
 
         /* PIN STYLE */
         .custom-pin-container { display: flex; justify-content: center; align-items: center; }
@@ -121,8 +139,6 @@
 
         /* FOOTER */
         footer { text-align: center; padding: 40px; border-top: 1px solid #1f2f4d; color: #8892b0; }
-        .social-links { margin-bottom: 20px; }
-        .social-links a { color: #a8b2d1; margin: 0 10px; font-size: 1.5em; text-decoration: none; }
 
         @media (max-width: 768px) { header { flex-direction: column; } .boutons { flex-direction: column; } .timeline-line { display: none; } .top-banner { flex-direction: column; } }
     </style>
@@ -139,10 +155,8 @@
         <nav>
             <a href="apropos.html">À Propos</a>
             <a href="causes.html">Causes</a>
-            <a href="index.html#concours">Concours</a>
-            <a href="faq.html">Aide</a>
-            <a href="partenaires.html">Espace Organismes</a>
-            <a href="inscription.html">Participer</a>
+            <a href="vote.html">Vote</a>
+            <a href="partenaires.html">Organismes</a>
             <a href="connexion.html" class="btn-connexion">Connexion</a>
         </nav>
     </header>
@@ -156,7 +170,7 @@
             <div class="boutons">
                 <a href="causes.html" class="btn btn-principal">Découvrir les causes</a>
                 <a href="vote.html" class="btn-vote-anime">🗳️ Voter pour la cause du mois</a>
-                <a href="#comment-ca-marche" class="btn btn-secondaire">Comment ça marche ?</a>
+                <a href="https://isow.forfeo.com/giftcards" class="btn btn-shop" target="_blank">🎁 Offrir un forfait</a>
             </div>
         </section>
 
@@ -179,11 +193,10 @@
             <h2 class="section-title">Comment ça marche ?</h2>
             <div class="flex-container">
                 <div class="flex-item">
-                    <a href="https://forfeo.com" target="_blank" class="step-link" title="Aller sur Forfeo.com">
-                        <span class="step-icon">🎯</span>
-                        <h3 style="color: #e6f1ff;">1. Choisissez</h3>
-                        <p style="color: #a8b2d1;">Achetez votre forfait sur <span class="flash-link">Forfeo.com</span></p>
-                    </a>
+                    <span class="step-icon">🎯</span>
+                    <h3 style="color: #e6f1ff;">1. Choisissez</h3>
+                    <p style="color: #a8b2d1;">Achetez votre forfait sur notre site.</p>
+                    <a href="https://isow.forfeo.com/giftcards" target="_blank" class="btn-step-link">Visiter Forfeo.com</a>
                 </div>
                 
                 <div class="flex-item">
@@ -219,6 +232,16 @@
                     <div class="timeline-step"><div class="step-dot">3</div><h4>Lancement</h4></div>
                     <div class="timeline-step"><div class="step-dot">4</div><h4>Impact</h4></div>
                 </div>
+            </div>
+
+            <div class="launch-cta">
+                <h4 style="color:#e6f1ff; margin-top:0;">🔔 Restez informés du lancement</h4>
+                <form action="https://api.web3forms.com/submit" method="POST" class="newsletter-form">
+                    <input type="hidden" name="access_key" value="c7c665be-ec7f-4455-9a5e-11ebb323fff9">
+                    <input type="hidden" name="redirect" value="https://forfeo2005.github.io/FORFEO-DON-COMUNAUTAIRE/merci-newsletter.html">
+                    <input type="email" name="email" class="newsletter-input" placeholder="Votre courriel" required>
+                    <button type="submit" class="newsletter-btn">M'inscrire</button>
+                </form>
             </div>
         </section>
 
@@ -263,11 +286,14 @@
             <div class="marquee-wrapper">
                 <div class="marquee">
                     <div class="marquee-content">
-                        <img src="https://placehold.co/300x200/112240/64ffda?text=Spa+Experience" class="gallery-item">
-                        <img src="https://placehold.co/300x200/112240/64ffda?text=Resto+Chic" class="gallery-item">
-                        <img src="https://placehold.co/300x200/112240/64ffda?text=Nature+Quebec" class="gallery-item">
-                        <img src="https://placehold.co/300x200/112240/64ffda?text=Hotel+Luxe" class="gallery-item">
-                        <img src="https://placehold.co/300x200/112240/64ffda?text=Spa+Experience" class="gallery-item">
+                        <a href="videos.html" class="gallery-link"><img src="https://placehold.co/300x200/112240/64ffda?text=Spa+Experience" class="gallery-item"></a>
+                        <a href="videos.html" class="gallery-link"><img src="https://placehold.co/300x200/112240/64ffda?text=Resto+Chic" class="gallery-item"></a>
+                        <a href="videos.html" class="gallery-link"><img src="https://placehold.co/300x200/112240/64ffda?text=Nature+Quebec" class="gallery-item"></a>
+                        <a href="videos.html" class="gallery-link"><img src="https://placehold.co/300x200/112240/64ffda?text=Hotel+Luxe" class="gallery-item"></a>
+                        <a href="videos.html" class="gallery-link"><img src="https://placehold.co/300x200/112240/64ffda?text=Aventure" class="gallery-item"></a>
+                        <a href="videos.html" class="gallery-link"><img src="https://placehold.co/300x200/112240/64ffda?text=Spa+Experience" class="gallery-item"></a>
+                        <a href="videos.html" class="gallery-link"><img src="https://placehold.co/300x200/112240/64ffda?text=Resto+Chic" class="gallery-item"></a>
+                        <a href="videos.html" class="gallery-link"><img src="https://placehold.co/300x200/112240/64ffda?text=Nature+Quebec" class="gallery-item"></a>
                     </div>
                 </div>
             </div>
@@ -281,9 +307,7 @@
                     <button class="map-btn" onclick="searchMap()">Chercher</button>
                 </div>
             </div>
-            <div class="map-container">
-                <div id="map"></div>
-            </div>
+            <div id="map"></div>
         </section>
 
     </main>
@@ -306,23 +330,23 @@
             }
         }, 1000);
 
-        // 2. CARTE (NOMS ANONYMES POUR CONSTRUCTION)
+        // 2. CARTE (Correction bug d'affichage + Noms génériques)
         var map = L.map('map').setView([46.8139, -71.2080], 6); 
         L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { attribution: '&copy; OpenStreetMap &copy; CARTO', subdomains: 'abcd', maxZoom: 19 }).addTo(map);
         var pinIcon = L.divIcon({ className: 'custom-pin-container', html: "<div class='custom-pin'></div>", iconSize: [30, 42], iconAnchor: [15, 42], popupAnchor: [0, -40] });
 
-        // Données génériques (Pas de vrais noms)
+        // Données génériques (Noms d'organismes fictifs/types pour le pré-lancement)
         var impactPoints = [
-            { "nom": "Organisme Alimentaire - Québec", "lat": 46.8139, "lon": -71.2080, "desc": "Lutte contre la faim." },
-            { "nom": "Aide Jeunesse - Montréal", "lat": 45.5186, "lon": -73.5540, "desc": "Soutien aux jeunes." },
-            { "nom": "Refuge Animalier - Estrie", "lat": 45.4042, "lon": -71.8929, "desc": "Protection animale." },
-            { "nom": "Banque Alimentaire - Montréal", "lat": 45.5017, "lon": -73.5673, "desc": "Aide alimentaire." },
-            { "nom": "Centre Femmes - Charlevoix", "lat": 47.6259, "lon": -70.3622, "desc": "Soutien femmes." },
-            { "nom": "Aide Régionale - Rimouski", "lat": 48.4398, "lon": -68.5234, "desc": "Aide alimentaire." }
+            { "nom": "Banque Alimentaire (Capitale-Nationale)", "lat": 46.8139, "lon": -71.2080, "desc": "Lutte contre la faim.", "url": "#" },
+            { "nom": "Aide Jeunesse (Montréal)", "lat": 45.5186, "lon": -73.5540, "desc": "Soutien aux jeunes.", "url": "#" },
+            { "nom": "Refuge Animalier (Estrie)", "lat": 45.4042, "lon": -71.8929, "desc": "Protection animale.", "url": "#" },
+            { "nom": "Soutien Alimentaire (Montréal)", "lat": 45.5017, "lon": -73.5673, "desc": "Aide alimentaire.", "url": "#" },
+            { "nom": "Centre Femmes (Charlevoix)", "lat": 47.6259, "lon": -70.3622, "desc": "Soutien femmes.", "url": "#" },
+            { "nom": "Aide Régionale (Bas-St-Laurent)", "lat": 48.4398, "lon": -68.5234, "desc": "Aide alimentaire.", "url": "#" }
         ];
 
         impactPoints.forEach(point => {
-            let popup = `<b style="color:#0a192f; font-size:1.1em;">${point.nom}</b><br>${point.desc}`;
+            let popup = `<b style="color:#0a192f; font-size:1.1em;">${point.nom}</b><br>${point.desc}<br><a href="${point.url}" class="btn-step-link" style="font-size:0.8em; margin-top:5px; padding:2px 8px;">🌐 Visiter</a>`;
             L.marker([point.lat, point.lon], { icon: pinIcon }).addTo(map).bindPopup(popup);
         });
 
