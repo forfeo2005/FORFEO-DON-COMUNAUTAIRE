@@ -6,7 +6,13 @@
     <title>Espace Partenaires & Organismes - Forfeo</title>
     
     <style>
-        body { margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0a192f; color: #ccd6f6; line-height: 1.6; }
+        /* --- CONFIGURATION GÉNÉRALE --- */
+        html { scroll-behavior: smooth; }
+        * { box-sizing: border-box; }
+        
+        body { margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0a192f; color: #ccd6f6; line-height: 1.6; overflow-x: hidden; }
+        
+        /* HEADER */
         header { display: flex; justify-content: space-between; align-items: center; padding: 15px 50px; background-color: rgba(10, 25, 47, 0.95); border-bottom: 1px solid #1f2f4d; position: sticky; top: 0; z-index: 1000; }
         .logo-img { height: 50px; width: auto; }
         nav { display: flex; gap: 20px; align-items: center; }
@@ -14,84 +20,75 @@
         nav a:hover { color: #64ffda; }
         .btn-connexion { border: 1px solid #64ffda; color: #64ffda !important; padding: 8px 20px; border-radius: 4px; transition: background-color 0.3s; }
         .btn-connexion:hover { background-color: rgba(100, 255, 218, 0.1); }
+
+        /* HERO B2B */
         .hero-b2b { text-align: center; padding: 100px 20px; max-width: 900px; margin: 0 auto; border-bottom: 1px solid #1f2f4d; }
         .badge-dev { background-color: rgba(100, 255, 218, 0.1); color: #64ffda; padding: 5px 15px; border-radius: 20px; font-size: 0.85em; font-weight: bold; border: 1px solid #64ffda; display: inline-block; margin-bottom: 20px; }
         h1 { font-size: 3em; color: #e6f1ff; margin-bottom: 20px; line-height: 1.2; }
         .subtitle { font-size: 1.2em; color: #8892b0; margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto; }
         .btn-cta { background-color: #64ffda; color: #0a192f; padding: 15px 30px; font-weight: bold; text-decoration: none; border-radius: 5px; transition: transform 0.2s; display: inline-block; }
         .btn-cta:hover { transform: translateY(-3px); background-color: #4cdbb3; }
+
+        /* SECTIONS */
         .section-container { max-width: 1000px; margin: 0 auto; padding: 80px 20px; }
         h2 { color: #e6f1ff; font-size: 2em; text-align: center; margin-bottom: 50px; position: relative; }
         h2::after { content: ""; display: block; width: 60px; height: 3px; background-color: #64ffda; margin: 15px auto 0; }
-        .pillars-grid { display: flex; gap: 30px; flex-wrap: wrap; justify-content: center; }
-        .pillar-card { background-color: #112240; padding: 30px; border-radius: 8px; flex: 1; min-width: 280px; border-left: 4px solid #64ffda; }
-        .pillar-card h3 { color: #e6f1ff; margin-top: 0; }
-        .pillar-card p { color: #a8b2d1; font-size: 0.95em; margin-bottom: 0; }
-        
-        /* --- NOUVEAUX STYLES POUR LE PROCESSUS --- */
-        .process-steps { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; text-align: center; margin-top: 40px; }
-        .step { flex: 1; min-width: 200px; padding: 20px; background: rgba(17, 34, 64, 0.5); border-radius: 10px; display: flex; flex-direction: column; align-items: center; }
-        .step-number { font-size: 2.5em; font-weight: bold; color: #64ffda; display: block; margin-bottom: 10px; opacity: 0.5; }
-        .step h4 { color: #e6f1ff; margin-bottom: 10px; margin-top: 0; }
-        
-        /* Animation flash */
-        @keyframes flash-pulse {
-            0% { box-shadow: 0 0 0 0 rgba(100, 255, 218, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(100, 255, 218, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(100, 255, 218, 0); }
-        }
-        
-        /* Bouton flash générique */
-        .flash-btn {
-            display: inline-block;
+
+        /* NOUVEAU : CRITÈRES D'ADMISSIBILITÉ (CHECKLIST) */
+        .eligibility-box {
             background-color: #112240;
-            color: #64ffda;
-            border: 2px solid #64ffda;
-            padding: 10px 20px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 15px;
-            transition: all 0.3s;
-            animation: flash-pulse 2s infinite;
+            border: 1px solid #233554;
+            border-radius: 10px;
+            padding: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
         }
-        .flash-btn:hover {
-            background-color: #64ffda;
-            color: #0a192f;
-            animation: none;
-            transform: translateY(-2px);
-        }
+        .eligibility-text { flex: 1; min-width: 300px; }
+        .eligibility-list { flex: 1; min-width: 300px; }
+        .check-item { display: flex; align-items: center; margin-bottom: 15px; color: #a8b2d1; }
+        .check-icon { color: #64ffda; font-weight: bold; margin-right: 15px; font-size: 1.2em; }
 
-        /* Lien titre spécifique pour l'étape 01 */
-        .step-title-link {
-            text-decoration: none;
-            display: inline-block;
-        }
-        .step-title-link h4 {
-            display: inline-block;
-            padding: 8px 15px;
-            border-radius: 4px;
-            transition: all 0.3s;
-            color: #64ffda;
-            border: 1px solid transparent;
-        }
-        .step-title-link:hover h4 {
-             border-color: #64ffda;
-             background-color: rgba(100, 255, 218, 0.1);
-             animation: flash-pulse 2s infinite;
-        }
+        /* VISIBILITÉ (Why join) */
+        .value-grid { display: flex; gap: 30px; margin-top: 50px; flex-wrap: wrap; }
+        .value-card { flex: 1; min-width: 250px; text-align: center; padding: 20px; }
+        .value-icon { font-size: 2.5em; margin-bottom: 15px; display: block; }
+        .value-card h3 { color: #e6f1ff; margin-bottom: 10px; }
 
+        /* PROCESSUS */
+        .process-steps { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; text-align: center; margin-top: 40px; }
+        .step { flex: 1; min-width: 200px; padding: 20px; background: rgba(17, 34, 64, 0.5); border-radius: 10px; }
+        .step-number { font-size: 2.5em; font-weight: bold; color: #64ffda; display: block; margin-bottom: 10px; opacity: 0.5; }
+        .step h4 { color: #e6f1ff; margin-bottom: 10px; }
 
-        details { background-color: #112240; margin-bottom: 15px; border-radius: 5px; border: 1px solid #233554; }
-        summary { padding: 15px; cursor: pointer; font-weight: bold; color: #e6f1ff; list-style: none; }
-        summary:hover { color: #64ffda; }
-        .faq-text { padding: 15px; border-top: 1px solid #233554; color: #a8b2d1; font-size: 0.95em; }
+        /* FORMULAIRE */
         .form-box { background-color: #112240; padding: 40px; border-radius: 10px; border: 1px solid #64ffda; max-width: 700px; margin: 0 auto; }
         label { display: block; color: #64ffda; margin-bottom: 8px; font-weight: bold; font-size: 0.9em; margin-top: 20px; }
         input, textarea, select { width: 100%; padding: 12px; border-radius: 5px; border: 1px solid #233554; background-color: #0a192f; color: #ccd6f6; box-sizing: border-box; font-family: inherit; }
         .btn-submit { width: 100%; padding: 15px; background-color: #64ffda; color: #0a192f; border: none; border-radius: 5px; font-weight: bold; font-size: 1.1em; cursor: pointer; margin-top: 30px; transition: background-color 0.3s; }
         .btn-submit:hover { background-color: #4cdbb3; }
+
+        /* FAQ */
+        details { background-color: #112240; margin-bottom: 15px; border-radius: 5px; border: 1px solid #233554; }
+        summary { padding: 15px; cursor: pointer; font-weight: bold; color: #e6f1ff; list-style: none; }
+        summary:hover { color: #64ffda; }
+        .faq-text { padding: 15px; border-top: 1px solid #233554; color: #a8b2d1; font-size: 0.95em; }
+
         footer { text-align: center; padding: 40px; font-size: 0.9em; color: #8892b0; border-top: 1px solid #1f2f4d; background-color: #0a192f; }
+
+        /* MOBILE */
+        @media only screen and (max-width: 768px) {
+            header { flex-direction: column; padding: 15px 10px; }
+            .logo-img { margin-bottom: 15px; }
+            nav { flex-wrap: wrap; justify-content: center; gap: 15px 10px; width: 100%; }
+            h1 { font-size: 2.2em; }
+            .section-container { padding: 40px 20px; }
+            .eligibility-box { flex-direction: column; gap: 20px; padding: 20px; }
+            .form-box { padding: 20px; }
+            .btn-submit { width: 100%; }
+            .value-grid { flex-direction: column; gap: 40px; }
+        }
     </style>
 </head>
 <body>
@@ -109,60 +106,72 @@
 
     <main>
         <section class="hero-b2b">
-            <span class="badge-dev">🚀 Projet en phase de pré-lancement & consultation</span>
-            <h1>Construisons ensemble le futur du don communautaire au Québec.</h1>
-            <p class="subtitle">Forfeo développe un modèle de financement durable issu du commerce local. Nous invitons les organismes à but non lucratif à se manifester pour co-créer cette vision.</p>
-            <a href="#manifestation" class="btn-cta">Manifester votre intérêt</a>
+            <span class="badge-dev">🚀 Projet en phase de pré-lancement</span>
+            <h1>Le financement participatif,<br>sans l'effort.</h1>
+            <p class="subtitle">Forfeo transforme l'achat local en levier financier pour votre cause. Pas de billets à vendre, pas d'événements à organiser. Juste du soutien.</p>
+            <a href="#manifestation" class="btn-cta">Rejoindre le mouvement</a>
         </section>
 
         <section class="section-container">
-            <h2>Notre vision du partenariat</h2>
-            <div class="pillars-grid">
-                <div class="pillar-card">
-                    <h3>🤝 Respect de votre mission</h3>
-                    <p>Nous ne sommes pas là pour dicter vos actions. Forfeo agit comme un levier financier autonome, sans ingérence dans la gestion de votre organisme.</p>
+            <h2>Êtes-vous admissible ?</h2>
+            <div class="eligibility-box">
+                <div class="eligibility-text">
+                    <h3 style="color:#e6f1ff; margin-top:0;">Nous recherchons des partenaires sérieux.</h3>
+                    <p style="color:#8892b0;">Pour assurer la confiance de nos clients et la légitimité des votes, nous avons établi des critères simples mais stricts.</p>
                 </div>
-                <div class="pillar-card">
-                    <h3>💎 Transparence totale</h3>
-                    <p>Les fonds proviennent directement des bénéfices générés par la vente de nos forfaits. Le modèle est clair : l'achat plaisir finance l'action sociale.</p>
+                <div class="eligibility-list">
+                    <div class="check-item"><span class="check-icon">✓</span> OBNL enregistré au Québec (NEQ valide)</div>
+                    <div class="check-item"><span class="check-icon">✓</span> Mission apolitique et non religieuse</div>
+                    <div class="check-item"><span class="check-icon">✓</span> Impact local direct (pas d'intermédiaires)</div>
+                    <div class="check-item"><span class="check-icon">✓</span> Capacité à fournir un logo et une description</div>
                 </div>
-                <div class="pillar-card">
-                    <h3>🌱 Vision long terme</h3>
-                    <p>Nous cherchons à bâtir des relations durables, au-delà d'une simple campagne ponctuelle. Nous visons un impact récurrent.</p>
+            </div>
+        </section>
+
+        <section class="section-container">
+            <h2>Pourquoi s'inscrire maintenant ?</h2>
+            <div class="value-grid">
+                <div class="value-card">
+                    <span class="value-icon">📢</span>
+                    <h3>Visibilité Gratuite</h3>
+                    <p style="color:#8892b0; font-size:0.9em;">Même si vous ne remportez pas le vote du mois, votre logo et votre mission sont exposés à des milliers de visiteurs québécois sur notre plateforme de vote.</p>
+                </div>
+                <div class="value-card">
+                    <span class="value-icon">⚖️</span>
+                    <h3>Rotation Équitable</h3>
+                    <p style="color:#8892b0; font-size:0.9em;">Pas de "concours de popularité" injuste. Nous sélectionnons des cohortes thématiques (ex: Mois de l'Environnement) pour que les petits organismes aient une chance réelle face aux gros.</p>
+                </div>
+                <div class="value-card">
+                    <span class="value-icon">💸</span>
+                    <h3>Financement Libre</h3>
+                    <p style="color:#8892b0; font-size:0.9em;">Les fonds versés (1 % des bénéfices) sont des dons non affectés. Vous les utilisez là où vous en avez réellement besoin (loyer, salaires, projets).</p>
                 </div>
             </div>
         </section>
 
         <section class="section-container" style="background-color: #0d1f3a; border-radius: 15px;">
             <h2>Le modèle en développement</h2>
-            <p style="text-align: center; color: #a8b2d1; max-width: 700px; margin: 0 auto;">Voici les grandes lignes du concept sur lequel nous travaillons. Votre avis d'expert terrain sera précieux pour affiner ce processus.</p>
-            
+            <p style="text-align: center; color: #a8b2d1; max-width: 700px; margin: 0 auto;">Voici comment nous envisageons le cycle de don.</p>
             <div class="process-steps">
                 <div class="step">
                     <span class="step-number">01</span>
-                    <a href="https://forfeo.com" target="_blank" class="step-title-link">
-                        <h4>Achat Local ↗</h4>
-                    </a>
-                    <p style="font-size: 0.9em; color:#8892b0;">Le consommateur achète un forfait expérience sur Forfeo.</p>
+                    <h4>Achat Local</h4>
+                    <p style="font-size: 0.9em; color:#8892b0;">Ventes de forfaits sur Forfeo.com.</p>
                 </div>
-
                 <div class="step">
                     <span class="step-number">02</span>
-                    <h4>Contribution</h4>
-                    <p style="font-size: 0.9em; color:#8892b0;">Forfeo prélève 1 % sur ses bénéfices pour le fonds communautaire.</p>
+                    <h4>Cagnotte</h4>
+                    <p style="font-size: 0.9em; color:#8892b0;">Accumulation du 1 % des bénéfices.</p>
                 </div>
-
                 <div class="step">
                     <span class="step-number">03</span>
                     <h4>Vote Citoyen</h4>
-                    <p style="font-size: 0.9em; color:#8892b0;">La communauté vote mensuellement pour les causes prioritaires.</p>
-                    <a href="vote.html" class="flash-btn">Voter pour la cause du mois</a>
+                    <p style="font-size: 0.9em; color:#8892b0;">La communauté choisit la cause du mois.</p>
                 </div>
-
                 <div class="step">
                     <span class="step-number">04</span>
-                    <h4>Impact</h4>
-                    <p style="font-size: 0.9em; color:#8892b0;">Les fonds sont reversés aux organismes partenaires sélectionnés.</p>
+                    <h4>Versement</h4>
+                    <p style="font-size: 0.9em; color:#8892b0;">Envoi des fonds à l'organisme gagnant.</p>
                 </div>
             </div>
         </section>
@@ -170,31 +179,24 @@
         <section class="section-container">
             <h2>Questions Fréquentes</h2>
             <details>
-                <summary>Est-ce qu'il y a des frais pour s'inscrire comme organisme ?</summary>
-                <div class="faq-text">Absolument aucun. Forfeo ne demandera jamais d'argent aux organismes. Notre but est de vous en donner, pas de vous en prendre.</div>
+                <summary>Est-ce qu'il y a des frais pour s'inscrire ?</summary>
+                <div class="faq-text">Absolument aucun. Forfeo ne demandera jamais d'argent aux organismes.</div>
             </details>
             <details>
-                <summary>Quels types d'organismes recherchez-vous ?</summary>
-                <div class="faq-text">Nous sommes ouverts à tous les OBNL enregistrés au Québec œuvrant dans les secteurs : pauvreté, santé, éducation, environnement, jeunesse et itinérance.</div>
+                <summary>Comment fonctionne la sélection pour le vote ?</summary>
+                <div class="faq-text">Notre comité d'éthique sélectionne 3 à 5 organismes par mois basés sur une thématique (ex: Rentrée scolaire, Froid hivernal, etc.) pour assurer une cohérence.</div>
             </details>
             <details>
                 <summary>Quand le financement débutera-t-il ?</summary>
-                <div class="faq-text">Le projet est en phase de pré-lancement. Nous constituons actuellement notre réseau de partenaires potentiels. Aucune date de versement n'est encore fixée.</div>
-            </details>
-            <details>
-                <summary>Est-ce que cela demande du temps de gestion pour nous ?</summary>
-                <div class="faq-text">Notre objectif est "Zéro charge administrative". Nous voulons simplifier le processus au maximum pour que vous puissiez vous concentrer sur votre mission terrain.</div>
-            </details>
-            <details>
-                <summary>D'où vient l'argent exactement ?</summary>
-                <div class="faq-text">Il ne s'agit pas d'une sollicitation de don auprès du public. L'argent provient d'une réallocation d'une partie des profits commerciaux de Forfeo sur chaque vente.</div>
+                <div class="faq-text">Le projet est en phase de pré-lancement (voir le compteur sur l'accueil). Nous constituons notre banque de partenaires maintenant pour être prêts au jour J.</div>
             </details>
         </section>
 
         <section id="manifestation" class="section-container">
             <div class="form-box">
-                <h2 style="margin-bottom: 10px;">Manifestation d'intérêt</h2>
-                <p style="text-align:center; color:#a8b2d1; margin-bottom:30px;">Remplir ce formulaire est sans engagement. Cela nous permet simplement de savoir que vous existez et que vous êtes intéressés à en savoir plus.</p>
+                <h2 style="margin-bottom: 10px;">Devenir partenaire potentiel</h2>
+                <p style="text-align:center; color:#a8b2d1; margin-bottom:30px;">Remplissez ce formulaire pour entrer dans notre base de données. C'est sans engagement.</p>
+                
                 <form action="https://api.web3forms.com/submit" method="POST">
                     <input type="hidden" name="access_key" value="c7c665be-ec7f-4455-9a5e-11ebb323fff9">
                     <input type="hidden" name="subject" value="Nouvelle manifestation d'intérêt ORGANISME">
