@@ -25,7 +25,19 @@
             display: flex; justify-content: center; gap: 15px; align-items: center; flex-wrap: wrap;
         }
         .highlight-neon { color: #64ffda; font-weight: 800; text-shadow: 0 0 10px rgba(100, 255, 218, 0.4); }
-        .badge-construction { background: #ffbd2e; color: #0a192f; padding: 2px 8px; border-radius: 4px; font-weight: bold; font-size: 0.8em; }
+        
+        /* ANIMATION "FLASH" POUR LE BADGE CONSTRUCTION */
+        @keyframes flashAlert {
+            0% { transform: scale(1); box-shadow: 0 0 0 rgba(255, 189, 46, 0); }
+            50% { transform: scale(1.05); box-shadow: 0 0 15px rgba(255, 189, 46, 0.8); color: #000; background: #ffbd2e; }
+            100% { transform: scale(1); box-shadow: 0 0 0 rgba(255, 189, 46, 0); }
+        }
+        .badge-construction { 
+            background: #ffbd2e; color: #0a192f; padding: 4px 12px; border-radius: 4px; 
+            font-weight: bold; font-size: 0.85em; text-transform: uppercase;
+            animation: flashAlert 1.5s infinite ease-in-out; /* L'animation est ici */
+            border: 1px solid #ffbd2e; cursor: default;
+        }
 
         header { display: flex; justify-content: space-between; align-items: center; padding: 15px 50px; background-color: rgba(10, 25, 47, 0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #1f2f4d; }
         .logo-img { height: 50px; transition: transform 0.3s; }
@@ -48,7 +60,6 @@
         .btn { padding: 15px 25px; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 1em; display: inline-flex; align-items: center; justify-content: center; text-align: center; }
         .btn-principal { background-color: #64ffda; color: #0a192f; }
         .btn-secondaire { border: 2px solid #64ffda; color: #64ffda; }
-        /* Nouveau bouton shop */
         .btn-shop { background: linear-gradient(135deg, #00bcd4, #64ffda); color: #0a192f; border: none; box-shadow: 0 0 15px rgba(100, 255, 218, 0.4); transition: transform 0.2s; }
         .btn-shop:hover { transform: scale(1.05); }
         
@@ -68,23 +79,40 @@
         .flex-item { flex: 1; min-width: 280px; background: #112240; padding: 30px; border-radius: 10px; border: 1px solid #233554; transition: transform 0.3s; position: relative; display: flex; flex-direction: column; align-items: center; }
         .flex-item:hover { transform: translateY(-5px); border-color: #64ffda; }
         .step-icon { font-size: 3em; margin-bottom: 15px; display: block; }
-        
-        /* Bouton Spécial Étape 1 */
-        .btn-step-link {
-            background-color: transparent; border: 1px solid #64ffda; color: #64ffda; 
-            padding: 8px 20px; border-radius: 20px; text-decoration: none; font-weight: bold;
-            margin-top: 10px; display: inline-block; transition: all 0.3s;
-        }
+        .btn-step-link { background-color: transparent; border: 1px solid #64ffda; color: #64ffda; padding: 8px 20px; border-radius: 20px; text-decoration: none; font-weight: bold; margin-top: 10px; display: inline-block; transition: all 0.3s; }
         .btn-step-link:hover { background-color: #64ffda; color: #0a192f; }
 
-        /* MISSION CONTROL & NEWSLETTER */
-        .launch-control { background: #112240; margin: 80px auto; max-width: 1000px; border-radius: 20px; padding: 50px 30px; border: 1px solid rgba(100, 255, 218, 0.1); position: relative; overflow: hidden; }
+        /* MISSION CONTROL & COMPTE À REBOURS (EFFETS SPÉCIAUX) */
+        .launch-control { 
+            background: #112240; margin: 80px auto; max-width: 1000px; border-radius: 20px; padding: 50px 30px; 
+            border: 1px solid rgba(100, 255, 218, 0.1); position: relative; overflow: hidden; 
+            box-shadow: 0 0 50px rgba(0,0,0,0.3);
+        }
+        /* Effet Radar en fond */
+        .launch-control::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: conic-gradient(from 0deg, transparent 0%, rgba(100, 255, 218, 0.05) 20%, transparent 40%);
+            animation: radarSpin 10s linear infinite; pointer-events: none;
+        }
+        @keyframes radarSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
         .launch-header { text-align: center; position: relative; z-index: 2; margin-bottom: 30px; }
         .launch-header h3 { color: #e6f1ff; margin: 0; }
         .countdown-container { display: flex; justify-content: center; gap: 20px; margin-bottom: 40px; position: relative; z-index: 2; }
-        .countdown-box { background: rgba(10, 25, 47, 0.8); border: 1px solid #64ffda; border-radius: 10px; width: 80px; height: 80px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-        .count-number { font-size: 1.8em; font-weight: bold; color: #e6f1ff; }
-        .count-label { font-size: 0.7em; color: #64ffda; text-transform: uppercase; }
+        
+        /* ANIMATION RESPIRATION NÉON */
+        @keyframes neonPulse {
+            0% { box-shadow: 0 0 5px rgba(100, 255, 218, 0.1); border-color: rgba(100, 255, 218, 0.2); }
+            50% { box-shadow: 0 0 20px rgba(100, 255, 218, 0.4); border-color: #64ffda; }
+            100% { box-shadow: 0 0 5px rgba(100, 255, 218, 0.1); border-color: rgba(100, 255, 218, 0.2); }
+        }
+        .countdown-box { 
+            background: rgba(10, 25, 47, 0.9); border: 1px solid #64ffda; border-radius: 12px; 
+            width: 90px; height: 90px; display: flex; flex-direction: column; justify-content: center; align-items: center; 
+            animation: neonPulse 3s infinite ease-in-out; /* L'effet est ici */
+        }
+        .count-number { font-size: 2em; font-weight: 800; color: #e6f1ff; text-shadow: 0 0 10px rgba(230, 241, 255, 0.5); }
+        .count-label { font-size: 0.7em; color: #64ffda; text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; }
         
         /* TIMELINE */
         .timeline-wrapper { position: relative; z-index: 2; padding: 0 20px; margin-bottom: 40px; }
@@ -92,13 +120,14 @@
         .timeline-bg { position: absolute; top: 15px; left: 0; right: 0; height: 4px; background: #233554; z-index: 0; }
         .timeline-step { flex: 1; text-align: center; position: relative; z-index: 1; }
         .step-dot { width: 30px; height: 30px; background: #0a192f; border: 3px solid #233554; border-radius: 50%; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; color: #8892b0; font-weight: bold; }
-        .step-active .step-dot { border-color: #64ffda; color: #64ffda; }
+        .step-active .step-dot { border-color: #64ffda; color: #64ffda; box-shadow: 0 0 10px rgba(100,255,218,0.5); }
 
         /* NEWSLETTER FORM */
-        .launch-cta { text-align: center; position: relative; z-index: 2; background: rgba(100, 255, 218, 0.05); padding: 20px; border-radius: 10px; display: inline-block; width: 100%; max-width: 500px; margin: 0 auto; display: block; }
+        .launch-cta { text-align: center; position: relative; z-index: 2; background: rgba(100, 255, 218, 0.05); padding: 20px; border-radius: 10px; display: inline-block; width: 100%; max-width: 500px; margin: 0 auto; display: block; border: 1px solid rgba(100, 255, 218, 0.1); }
         .newsletter-form { display: flex; gap: 10px; margin-top: 15px; justify-content: center; flex-wrap: wrap; }
         .newsletter-input { flex: 1; padding: 10px; border-radius: 5px; border: 1px solid #64ffda; background: #0a192f; color: #fff; min-width: 200px; }
-        .newsletter-btn { background: #64ffda; color: #0a192f; border: none; padding: 10px 20px; border-radius: 5px; font-weight: bold; cursor: pointer; }
+        .newsletter-btn { background: #64ffda; color: #0a192f; border: none; padding: 10px 20px; border-radius: 5px; font-weight: bold; cursor: pointer; transition: all 0.3s; }
+        .newsletter-btn:hover { background: #fff; box-shadow: 0 0 15px #64ffda; }
 
         /* CONCOURS */
         .concours-section { padding: 80px 20px; max-width: 1100px; margin: 0 auto; }
@@ -118,7 +147,7 @@
         .marquee-wrapper { display: flex; flex-direction: column; gap: 20px; }
         .marquee { display: flex; overflow: hidden; }
         .marquee-content { display: flex; gap: 20px; animation: scroll 60s linear infinite; }
-        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } } /* Scroll infini ajusté */
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         .gallery-item { height: 180px; border-radius: 10px; border: 1px solid #233554; transition: transform 0.3s; }
         .gallery-link { transition: transform 0.3s; display: block; }
         .gallery-link:hover { transform: scale(1.05); }
@@ -130,7 +159,6 @@
         .map-input { flex: 1; background: transparent; border: none; color: #fff; padding: 10px 20px; font-size: 1em; outline: none; }
         .map-btn { background: #64ffda; color: #0a192f; border: none; padding: 10px 30px; border-radius: 50px; cursor: pointer; font-weight: bold; transition: background 0.3s; }
         .map-btn:hover { background: #4cdbb3; }
-        /* CORRECTION HAUTEUR CARTE */
         #map { height: 500px; width: 100%; max-width: 1000px; border-radius: 15px; border: 2px solid #64ffda; box-shadow: 0 20px 50px rgba(0,0,0,0.6); z-index: 1; display: block; }
 
         /* PIN STYLE */
@@ -171,7 +199,7 @@
             <p class="subtitle">Chez Forfeo, chaque expérience que vous vivez contribue directement à soutenir les communautés du Québec.</p>
             <div class="boutons">
                 <a href="causes.html" class="btn btn-principal">Découvrir les causes</a>
-                <a href="vote.html" class="btn btn-vote-anime">🗳️ Voter pour la cause du mois</a>
+                <a href="vote.html" class="btn-vote-anime">🗳️ Voter pour la cause du mois</a>
                 <a href="https://isow.forfeo.com/giftcards" class="btn btn-shop" target="_blank">🎁 Offrir un forfait</a>
             </div>
         </section>
@@ -350,7 +378,7 @@
         ];
 
         impactPoints.forEach(point => {
-            let popup = `<b style="color:#0a192f; font-size:1.1em;">${point.nom}</b><br>${point.desc}<br><a href="${point.url}" class="btn-step-link" style="font-size:0.8em; margin-top:5px; padding:2px 8px;">🌐 Visiter</a>`;
+            let popup = `<b style="color:#0a192f; font-size:1.1em;">${point.nom}</b><br>${point.desc}`;
             L.marker([point.lat, point.lon], { icon: pinIcon }).addTo(map).bindPopup(popup);
         });
 
