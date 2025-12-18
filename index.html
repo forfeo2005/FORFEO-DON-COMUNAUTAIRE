@@ -173,7 +173,6 @@
             max-width: 1000px;
             margin: 0 auto;
             position: relative;
-            /* Effet 3D Holographique */
             perspective: 1000px;
         }
 
@@ -184,61 +183,66 @@
             border: 2px solid #64ffda;
             box-shadow: 0 20px 50px rgba(0,0,0,0.6);
             z-index: 1;
-            /* Petite inclinaison si on veut un effet tablette, sinon flat mais profond */
             transform-style: preserve-3d;
         }
 
-        /* Overlay de recherche */
         .map-search-overlay {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            z-index: 1000; /* Au-dessus de la carte */
-            background: rgba(10, 25, 47, 0.9);
-            padding: 10px;
-            border-radius: 10px;
-            border: 1px solid #64ffda;
-            display: flex;
-            gap: 10px;
+            position: absolute; top: 20px; left: 20px; z-index: 1000;
+            background: rgba(10, 25, 47, 0.9); padding: 10px; border-radius: 10px;
+            border: 1px solid #64ffda; display: flex; gap: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
-        
-        .map-input {
-            background: transparent;
-            border: none;
-            color: #fff;
-            padding: 5px;
-            width: 200px;
-            outline: none;
-        }
-        .map-btn {
-            background: #64ffda;
-            color: #0a192f;
-            border: none;
-            padding: 5px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-        }
+        .map-input { background: transparent; border: none; color: #fff; padding: 5px; width: 200px; outline: none; }
+        .map-btn { background: #64ffda; color: #0a192f; border: none; padding: 5px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; }
 
-        /* --- 8. CHATBOT FORFY (VIDEO) --- */
+        /* --- 8. CHATBOT FORFY (VIDEO & TOOLTIP) --- */
         .chat-widget-btn {
             position: fixed; bottom: 30px; right: 30px; width: 70px; height: 70px;
             background-color: #64ffda; border-radius: 50%; display: flex; justify-content: center; align-items: center;
             cursor: pointer; box-shadow: 0 0 20px rgba(100, 255, 218, 0.4); z-index: 9999;
-            transition: transform 0.3s; animation: float 3s ease-in-out infinite; overflow: hidden; border: 2px solid #64ffda;
+            transition: transform 0.3s; animation: float 3s ease-in-out infinite;
+            /* Important pour que la bulle soit relative à ce bouton */
+            position: fixed; 
         }
         
         /* Vidéo Avatar */
-        .chat-video-icon {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-        }
-
+        .chat-video-icon { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 2px solid #64ffda; }
         .chat-widget-btn:hover { transform: scale(1.1); }
         @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
+
+        /* NOUVEAU : La Bulle d'aide au-dessus du chien */
+        .chat-tooltip {
+            position: absolute;
+            bottom: 85px; /* Juste au-dessus du bouton de 70px */
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #e6f1ff; /* Fond clair pour le contraste */
+            color: #0a192f;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            white-space: nowrap;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            opacity: 0; /* Caché au début */
+            animation: tooltipPopup 4s ease-in-out infinite; /* Animation cyclique */
+            pointer-events: none; /* Le clic passe au travers */
+        }
+        /* Petite flèche sous la bulle */
+        .chat-tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #e6f1ff transparent transparent transparent;
+        }
+        @keyframes tooltipPopup {
+            0%, 100% { opacity: 0; transform: translate(-50%, 10px); }
+            20%, 80% { opacity: 1; transform: translate(-50%, 0); }
+        }
 
         .chat-window {
             position: fixed; bottom: 110px; right: 30px; width: 350px; height: 500px;
@@ -248,10 +252,7 @@
         }
         .chat-header { background-color: #0a192f; padding: 15px; border-bottom: 1px solid #233554; display: flex; justify-content: space-between; align-items: center; }
         .chat-header h4 { margin: 0; color: #e6f1ff; }
-        
-        /* Avatar dans le header du chat aussi */
         .header-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid #64ffda; }
-
         .close-chat { cursor: pointer; color: #8892b0; font-weight: bold; }
         .chat-body { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; }
         .message { padding: 10px 15px; border-radius: 10px; font-size: 0.9em; max-width: 80%; }
@@ -303,6 +304,8 @@
             .chat-window { width: 90%; right: 5%; bottom: 100px; height: 60vh; }
             .map-search-overlay { width: 90%; top: 10px; left: 5%; }
             .map-input { width: 100%; }
+            /* Cacher la bulle sur mobile pour ne pas gêner */
+            .chat-tooltip { display: none; }
         }
     </style>
 </head>
@@ -431,7 +434,7 @@
         <section class="map-section">
             <div class="map-container">
                 <div class="map-search-overlay">
-                    <input type="text" id="mapSearch" class="map-input" placeholder="Trouver un organisme..." onkeypress="if(event.key==='Enter') searchMap()">
+                    <input type="text" id="mapSearch" class="map-input" placeholder="Trouver un organisme (ex: Moisson)..." onkeypress="if(event.key==='Enter') searchMap()">
                     <button class="map-btn" onclick="searchMap()">Chercher</button>
                 </div>
                 <h2 class="section-title" style="text-align:center; color:#e6f1ff; padding-top:20px; text-shadow:0 0 10px rgba(0,0,0,0.5);">Carte de l'Impact Social</h2>
@@ -440,6 +443,7 @@
         </section>
 
         <div class="chat-widget-btn" onclick="toggleChat()">
+            <div class="chat-tooltip">Besoin d'aide ? Wouf !</div>
             <video src="GifForfy.MP4" autoplay loop muted playsinline class="chat-video-icon"></video>
         </div>
 
@@ -492,7 +496,6 @@
         }, 1000);
 
         // --- 2. CARTE IMPACT & RECHERCHE ---
-        // Vue centrée sur le Québec, zoom ajusté
         var map = L.map('map').setView([46.8139, -71.2080], 6); 
         L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
             attribution: '&copy; OpenStreetMap &copy; CARTO', subdomains: 'abcd', maxZoom: 19
@@ -535,20 +538,28 @@
                       .openOn(map);
                 }, 2000);
             } else {
-                alert("Organisme non trouvé sur la carte pour l'instant.");
+                alert("Organisme non trouvé sur la carte pour l'instant. Essayez 'Moisson' ou 'SPA'.");
             }
         }
 
-        // --- 3. IA FORFY (CERVEAU COMPLET) ---
+        // --- 3. IA FORFY (CERVEAU COMPLET & EXPERT) ---
         const knowledgeBase = [
-            { keys: ["participer", "jouer", "inscription", "comment faire", "marche"], resp: "Pour participer, c'est simple !<br>1. Achetez un forfait sur <a href='https://isow.forfeo.com' style='color:#64ffda'>Forfeo.com</a>.<br>2. 1% va dans la cagnotte.<br>3. Votez pour la cause du mois ici même !" },
-            { keys: ["cause", "organisme", "partenaire", "association", "soutenir"], resp: "Nous soutenons des organismes enregistrés au Québec (Moisson, SPA, Refuges...). Vous êtes un organisme ? Inscrivez-vous sur la page <a href='partenaires.html' style='color:#64ffda'>Partenaires</a>." },
-            { keys: ["vote", "choisir", "gagner", "sélection"], resp: "Le vote se fait chaque mois. C'est la communauté qui décide quel organisme reçoit le don accumulé. Allez sur l'onglet <a href='vote.html' style='color:#64ffda'>Vote</a>." },
-            { keys: ["concours", "gagner", "prix", "tirage"], resp: "Nous avons plusieurs concours ! L'Escapade de Rêve et le Grand Tirage. Visitez la section <a href='#concours' style='color:#64ffda'>Concours</a> pour les détails." },
-            { keys: ["connexion", "compte", "login", "connecter"], resp: "Le bouton de connexion est en haut à droite. Il vous permet de gérer vos votes et vos participations aux concours." },
-            { keys: ["argent", "don", "1%", "combien", "sous"], resp: "Forfeo s'engage à reverser **1 % de ses bénéfices nets**. C'est de l'argent frais qui ne coûte rien de plus au client !" },
-            { keys: ["contact", "équipe", "parler", "humain"], resp: "Vous pouvez contacter notre équipe via la page <a href='faq.html' style='color:#64ffda'>Aide</a> ou nous suivre sur les réseaux sociaux !" },
-            { keys: ["bonjour", "salut", "allo", "hey"], resp: "Wouf ! Bonjour ! Je suis prêt à vous guider sur le site." }
+            // PARTICIPATION & FONCTIONNEMENT
+            { keys: ["participer", "jouer", "comment faire", "marche", "fonctionne"], resp: "C'est très simple !<br>1. Achetez un forfait sur <a href='https://isow.forfeo.com' style='color:#64ffda'>Forfeo.com</a>.<br>2. 1% du profit va dans la cagnotte.<br>3. Vous êtes inscrit aux concours et vous pouvez voter pour la cause du mois !" },
+            // INSCRIPTION (UTILISATEUR VS ORGANISME)
+            { keys: ["inscrire", "inscription", "compte", "créer"], resp: "Pour les utilisateurs, l'inscription est automatique à l'achat. Pour les **organismes** qui veulent bénéficier des dons, c'est par ici : <a href='partenaires.html' style='color:#64ffda'>Espace Partenaires</a>." },
+            // ORGANISMES & CAUSES
+            { keys: ["cause", "organisme", "partenaire", "association", "soutenir", "qui aidons nous"], resp: "Nous soutenons des OBNL québécois enregistrés (ex: Moisson, SPA, Refuges...). Vous pouvez voir des exemples sur la carte ci-dessus ou dans la section <a href='causes.html' style='color:#64ffda'>Causes</a>." },
+            // VOTE
+            { keys: ["vote", "choisir", "gagner la cause", "sélection"], resp: "Le pouvoir est à vous ! Chaque mois, la communauté vote pour la cause qui recevra le don. Ça se passe sur la page <a href='vote.html' style='color:#64ffda'>Vote</a>." },
+            // CONCOURS
+            { keys: ["concours", "gagner prix", "tirage", "cadeau"], resp: "On adore gâter notre communauté ! Nous avons des tirages trimestriels et des concours 'Escapade de Rêve'. Jetez un œil à la section <a href='#concours' style='color:#64ffda'>Concours</a>." },
+            // ARGENT & DONS
+            { keys: ["argent", "don", "1%", "combien", "sous", "profit"], resp: "Forfeo s'engage fermement à reverser **1 % de ses bénéfices nets**. C'est un don corporatif qui ne coûte rien de plus au client lors de son achat." },
+            // À PROPOS / ÉQUIPE
+            { keys: ["qui êtes vous", "équipe", "forfeo c'est quoi", "histoire", "mission"], resp: "Nous sommes une équipe de passionnés québécois qui veulent reconnecter le commerce local à l'entraide sociale. Découvrez notre histoire sur la page <a href='apropos.html' style='color:#64ffda'>À Propos</a>." },
+            // SALUTATIONS
+            { keys: ["bonjour", "salut", "allo", "hey", "coucou"], resp: "Wouf ! Bonjour ! Je suis prêt à vous guider sur le site. Posez-moi une question sur les concours ou les causes !" }
         ];
 
         function toggleChat() {
@@ -560,12 +571,15 @@
 
         function findResponse(text) {
             text = text.toLowerCase();
+            // Recherche de correspondance large
             for (let item of knowledgeBase) {
-                for (let key of item.keys) {
-                    if (text.includes(key)) return item.resp;
+                // On vérifie si TOUS les mots clés d'un groupe sont présents (pour être plus précis) ou au moins un
+                // Ici, on cherche si au moins un mot clé principal correspond
+                if (item.keys.some(key => text.includes(key))) {
+                    return item.resp;
                 }
             }
-            return "Je ne suis pas sûr de comprendre. Je connais tout sur les **concours**, les **organismes** et comment **participer**. Essayez un mot-clé ! 🐶";
+            return "Je ne suis pas sûr de comprendre. Je connais tout sur les **concours**, les **organismes**, le **vote** et comment **participer**. Essayez un mot-clé ! 🐶";
         }
 
         function sendMessage() {
